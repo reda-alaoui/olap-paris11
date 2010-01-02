@@ -40,13 +40,13 @@ public class DataSchemaImpl implements DataSchema {
 	}
 
 	@Override
-	public void setAttributeList(Vector<Attribute> attributeList) {
-		this.attributeList = attributeList;
+	public void addAttribute(Attribute attribute) {
+		this.attributeList.add(attribute);
 	}
 
 	@Override
-	public void setFunctionList(Vector<Function> functionList) {
-		this.functionList = functionList;
+	public void addFunction(Function function) {
+		this.functionList.add(function);
 	}
 	
 	

@@ -17,9 +17,9 @@ public interface DataSchema {
 	
 	public Vector<Attribute> getAttributes();
 	
-	public void setAttributeList(Vector<Attribute> attribute_list);
+	public void addAttribute(Attribute attribute);
 	
 	public Vector<Function> getFunctions();
 	
-    public void setFunctionList(Vector<Function> function_list);
+    public void addFunction(Function function);
 }
