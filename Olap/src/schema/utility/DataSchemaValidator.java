@@ -8,5 +8,7 @@ package schema.utility;
  *
  */
 public class DataSchemaValidator {
-
+	public DataSchemaValidator(){
+		
+	}
 }

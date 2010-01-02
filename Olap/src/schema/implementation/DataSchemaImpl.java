@@ -18,7 +18,11 @@ public class DataSchemaImpl implements DataSchema {
 	private String name;
 	private Vector<Attribute> attributeList;
 	private Vector<Function> functionList;
-
+	
+	public DataSchemaImpl(){
+		
+	}
+	
 	@Override
 	public String getName() {
 		return name;

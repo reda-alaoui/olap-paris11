@@ -8,5 +8,9 @@ package schema.utility;
  *
  */
 public class DataSchemaXMLLoader {
+	
+	public DataSchemaXMLLoader() {
+		// TODO Auto-generated constructor stub
+	}
 
 }

@@ -12,6 +12,10 @@ import schema.Function;
 public class FunctionImpl implements Function {
 	private String name;
 
+	public FunctionImpl(){
+		
+	}
+	
 	@Override
 	public String getName() {
 		return name;

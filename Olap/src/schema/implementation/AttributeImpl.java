@@ -13,6 +13,10 @@ public class AttributeImpl implements Attribute {
 	private String dataType;
 	private String name;
 	
+	public AttributeImpl(){
+		
+	}
+	
 	@Override
 	public String getDataType() {
 		return dataType;
