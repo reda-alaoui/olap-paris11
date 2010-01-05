@@ -11,9 +11,12 @@ public interface Attribute {
 	
 	public String getName();
 	
-	public void setName(String name);
+	public enum DataType{
+		ID,
+		INTEGER,
+		NUMBER,
+		STRING
+	}
 	
-	public String getDataType();
-	
-	public void setDataType(String dataType);
+	public DataType getDataType();
 }

@@ -3,7 +3,8 @@
  */
 package schema.implementation;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import schema.Attribute;
 import schema.DataSchema;
@@ -16,8 +17,8 @@ import schema.Function;
 public class DataSchemaImpl implements DataSchema {
 	
 	private String name;
-	private Vector<Attribute> attributeList;
-	private Vector<Function> functionList;
+	private ArrayList<Attribute> attribute_list;
+	private ArrayList<Function> function_list;
 	
 	public DataSchemaImpl(){
 		
@@ -29,28 +30,65 @@ public class DataSchemaImpl implements DataSchema {
 	}
 
 	@Override
-	public void setName(String name) {
-		this.name = name;
+	public Attribute getAttributeByName(String attribute_name) {
+		Iterator<Attribute> attribute_iterator = getAttributeIterator();
+		Attribute att;
+		while(attribute_iterator.hasNext()){
+			att = attribute_iterator.next();
+			if(att.getName().equals(attribute_name)){
+				return att;
+			}
+		}
+		return null;
 	}
 
 	@Override
-	public Vector<Attribute> getAttributes() {
-		return attributeList;
+	public Function getFunctionByDomain(Attribute function_domain) {
+		Iterator<Function> function_iterator = getFunctionIterator();
+		Function func;
+		while(function_iterator.hasNext()){
+			func = function_iterator.next();
+			if(func.getDomain().equals(function_domain)){
+				return func;
+			}
+		}
+		return null;
 	}
 
 	@Override
-	public Vector<Function> getFunctions() {
-		return functionList;
+	public Function getFunctionByName(String function_name) {
+		Iterator<Function> function_iterator = getFunctionIterator();
+		Function func;
+		while(function_iterator.hasNext()){
+			func = function_iterator.next();
+			if(func.getName().equals(function_name)){
+				return func;
+			}
+		}
+		return null;
 	}
 
 	@Override
-	public void addAttribute(Attribute attribute) {
-		this.attributeList.add(attribute);
+	public Function getFunctionByRange(Attribute function_range) {
+		Iterator<Function> function_iterator = getFunctionIterator();
+		Function func;
+		while(function_iterator.hasNext()){
+			func = function_iterator.next();
+			if(func.getRange().equals(function_range)){
+				return func;
+			}
+		}
+		return null;
 	}
 
 	@Override
-	public void addFunction(Function function) {
-		this.functionList.add(function);
+	public Iterator<Attribute> getAttributeIterator() {
+		return attribute_list.iterator();
+	}
+
+	@Override
+	public Iterator<Function> getFunctionIterator() {
+		return function_list.iterator();
 	}
 	
 	

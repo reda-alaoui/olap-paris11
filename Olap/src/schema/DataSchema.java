@@ -3,7 +3,7 @@
  */
 package schema;
 
-import java.util.Vector;
+import java.util.Iterator;
 
 /**
  * @author Reda
@@ -13,13 +13,15 @@ public interface DataSchema {
 	
 	public String getName();
 	
-	public void setName(String name);
+	public Iterator<Attribute> getAttributeIterator();
 	
-	public Vector<Attribute> getAttributes();
+	public Iterator<Function> getFunctionIterator();
 	
-	public void addAttribute(Attribute attribute);
+	public Attribute getAttributeByName(String attribute_name);
 	
-	public Vector<Function> getFunctions();
+	public Function getFunctionByRange(Attribute function_range);
 	
-    public void addFunction(Function function);
+	public Function getFunctionByName(String function_name);
+	
+	public Function getFunctionByDomain(Attribute function_domain);
 }

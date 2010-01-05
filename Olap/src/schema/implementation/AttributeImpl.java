@@ -10,15 +10,15 @@ import schema.Attribute;
  *
  */
 public class AttributeImpl implements Attribute {
-	private String dataType;
+	private DataType dataType;
 	private String name;
 	
 	public AttributeImpl(){
-		
+
 	}
 	
 	@Override
-	public String getDataType() {
+	public DataType getDataType() {
 		return dataType;
 	}
 
@@ -26,15 +26,4 @@ public class AttributeImpl implements Attribute {
 	public String getName() {
 		return name;
 	}
-
-	@Override
-	public void setDataType(String dataType) {
-		this.dataType = dataType;
-	}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
-
 }

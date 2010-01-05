@@ -3,6 +3,7 @@
  */
 package schema.implementation;
 
+import schema.Attribute;
 import schema.Function;
 
 /**
@@ -11,6 +12,8 @@ import schema.Function;
  */
 public class FunctionImpl implements Function {
 	private String name;
+	private Attribute domain;
+	private Attribute range;
 
 	public FunctionImpl(){
 		
@@ -22,8 +25,13 @@ public class FunctionImpl implements Function {
 	}
 
 	@Override
-	public void setName(String name) {
-		this.name = name;
+	public Attribute getDomain() {
+		return domain;
+	}
+
+	@Override
+	public Attribute getRange() {
+		return range;
 	}
 	
 	
