@@ -15,8 +15,10 @@ public class FunctionImpl implements Function {
 	private Attribute domain;
 	private Attribute range;
 
-	public FunctionImpl(){
-		
+	public FunctionImpl(String name, Attribute domain, Attribute range){
+		this.name = name;
+		this.domain = domain;
+		this.range = range;
 	}
 	
 	@Override

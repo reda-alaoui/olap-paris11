@@ -10,11 +10,12 @@ import schema.Attribute;
  *
  */
 public class AttributeImpl implements Attribute {
-	private DataType dataType;
 	private String name;
+	private DataType dataType;
 	
-	public AttributeImpl(){
-
+	public AttributeImpl(String name, DataType dataType){
+		this.name = name;
+		this.dataType = dataType;
 	}
 	
 	@Override
