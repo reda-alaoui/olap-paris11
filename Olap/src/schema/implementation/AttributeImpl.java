@@ -18,10 +18,12 @@ public class AttributeImpl implements Attribute {
 		this.dataType = dataType;
 	}
 	
+	@Override
 	public DataType getDataType() {
 		return dataType;
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}

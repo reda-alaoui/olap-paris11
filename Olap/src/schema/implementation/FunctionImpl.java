@@ -21,14 +21,17 @@ public class FunctionImpl implements Function {
 		this.range = range;
 	}
 	
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public Attribute getDomain() {
 		return domain;
 	}
 
+	@Override
 	public Attribute getRange() {
 		return range;
 	}
