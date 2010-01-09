@@ -3,13 +3,19 @@
  */
 package schema.test;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import java.util.ArrayList;
+
 import org.junit.Test;
+
+import schema.Attribute;
+import schema.Function;
+import schema.Attribute.DataType;
+import schema.implementation.AttributeImpl;
+import schema.implementation.DataSchemaImpl;
+import schema.implementation.FunctionImpl;
+import schema.utility.DataSchemaValidator;
 
 
 /**
@@ -18,46 +24,172 @@ import org.junit.Test;
  */
 public class DataSchemaValidatorTest {
 	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	/**
 	 * Test method for {@link schema.utility.DataSchemaValidator#DataSchemaValidator(schema.DataSchema)}.
 	 */
 	@Test
 	public void testDataSchemaValidator() {
-		fail("Not yet implemented"); // TODO
+		String name = "S";
+		ArrayList<Attribute> att_list = new ArrayList<Attribute>();
+		ArrayList<Function> func_list = new ArrayList<Function>();
+		//Defining attributes
+		att_list.add(new AttributeImpl("O", DataType.ID));
+		att_list.add(new AttributeImpl("Quantity",DataType.INTEGER));
+		att_list.add(new AttributeImpl("Product", DataType.STRING));
+		att_list.add(new AttributeImpl("Supplier", DataType.STRING));
+		att_list.add(new AttributeImpl("Category", DataType.STRING));
+		
+		//Defining functions
+		func_list.add(new FunctionImpl("q", att_list.get(0), att_list.get(1)));
+		func_list.add(new FunctionImpl("h", att_list.get(0), att_list.get(2)));
+		func_list.add(new FunctionImpl("h1", att_list.get(2), att_list.get(3)));
+		func_list.add(new FunctionImpl("h2", att_list.get(2), att_list.get(4)));
+		
+		DataSchemaImpl schema = new DataSchemaImpl(name,att_list,func_list);
+		new DataSchemaValidator(schema);
 	}
 
 	/**
 	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
 	 */
 	@Test
-	public void testGetValidation() {
-		fail("Not yet implemented"); // TODO
+	public void testGetValidation1() {
+		//Validation of a valid schema
+		String name = "S";
+		ArrayList<Attribute> att_list = new ArrayList<Attribute>();
+		ArrayList<Function> func_list = new ArrayList<Function>();
+		//Defining attributes
+		att_list.add(new AttributeImpl("O", DataType.ID));
+		att_list.add(new AttributeImpl("Quantity",DataType.INTEGER));
+		att_list.add(new AttributeImpl("Product", DataType.STRING));
+		att_list.add(new AttributeImpl("Supplier", DataType.STRING));
+		att_list.add(new AttributeImpl("Category", DataType.STRING));
+		
+		//Defining functions
+		func_list.add(new FunctionImpl("q", att_list.get(0), att_list.get(1)));
+		func_list.add(new FunctionImpl("h", att_list.get(0), att_list.get(2)));
+		func_list.add(new FunctionImpl("h1", att_list.get(2), att_list.get(3)));
+		func_list.add(new FunctionImpl("h2", att_list.get(2), att_list.get(4)));
+		
+		DataSchemaImpl schema = new DataSchemaImpl(name,att_list,func_list);
+		DataSchemaValidator validator = new DataSchemaValidator(schema);
+		
+		assertTrue(validator.getValidation());
+	}
+	
+	/**
+	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
+	 */
+	@Test
+	public void testGetValidation2() {
+		// Validation of a schema containing two attributes having the same name
+		String name = "S";
+		ArrayList<Attribute> att_list = new ArrayList<Attribute>();
+		ArrayList<Function> func_list = new ArrayList<Function>();
+		//Defining attributes
+		att_list.add(new AttributeImpl("O", DataType.ID));
+		att_list.add(new AttributeImpl("Quantity",DataType.INTEGER));
+		att_list.add(new AttributeImpl("Product", DataType.STRING));
+		att_list.add(new AttributeImpl("Supplier", DataType.STRING));
+		att_list.add(new AttributeImpl("Category", DataType.STRING));
+		att_list.add(new AttributeImpl("O", DataType.STRING));
+		
+		//Defining functions
+		func_list.add(new FunctionImpl("q", att_list.get(0), att_list.get(1)));
+		func_list.add(new FunctionImpl("h", att_list.get(0), att_list.get(2)));
+		func_list.add(new FunctionImpl("h1", att_list.get(2), att_list.get(3)));
+		func_list.add(new FunctionImpl("h2", att_list.get(2), att_list.get(4)));
+		
+		DataSchemaImpl schema = new DataSchemaImpl(name,att_list,func_list);
+		DataSchemaValidator validator = new DataSchemaValidator(schema);
+		
+		assertFalse(validator.getValidation());
+	}
+	
+	/**
+	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
+	 */
+	@Test
+	public void testGetValidation3() {
+		// Validation of a schema containing two functions having the same name
+		String name = "S";
+		ArrayList<Attribute> att_list = new ArrayList<Attribute>();
+		ArrayList<Function> func_list = new ArrayList<Function>();
+		//Defining attributes
+		att_list.add(new AttributeImpl("O", DataType.ID));
+		att_list.add(new AttributeImpl("Quantity",DataType.INTEGER));
+		att_list.add(new AttributeImpl("Product", DataType.STRING));
+		att_list.add(new AttributeImpl("Supplier", DataType.STRING));
+		att_list.add(new AttributeImpl("Category", DataType.STRING));
+		
+		//Defining functions
+		func_list.add(new FunctionImpl("q", att_list.get(0), att_list.get(1)));
+		func_list.add(new FunctionImpl("h", att_list.get(0), att_list.get(2)));
+		func_list.add(new FunctionImpl("h1", att_list.get(2), att_list.get(3)));
+		func_list.add(new FunctionImpl("h2", att_list.get(2), att_list.get(4)));
+		func_list.add(new FunctionImpl("h2", att_list.get(0), att_list.get(4)));
+		
+		DataSchemaImpl schema = new DataSchemaImpl(name,att_list,func_list);
+		DataSchemaValidator validator = new DataSchemaValidator(schema);
+		
+		assertFalse(validator.getValidation());
+	}
+	
+	/**
+	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
+	 */
+	@Test
+	public void testGetValidation4() {
+		//Validation of a schema containing more than one root
+		String name = "S";
+		ArrayList<Attribute> att_list = new ArrayList<Attribute>();
+		ArrayList<Function> func_list = new ArrayList<Function>();
+		//Defining attributes
+		att_list.add(new AttributeImpl("O", DataType.ID));
+		att_list.add(new AttributeImpl("Quantity",DataType.INTEGER));
+		att_list.add(new AttributeImpl("Product", DataType.STRING));
+		att_list.add(new AttributeImpl("Supplier", DataType.STRING));
+		att_list.add(new AttributeImpl("Category", DataType.STRING));
+		att_list.add(new AttributeImpl("Second Root", DataType.ID));
+		
+		//Defining functions
+		func_list.add(new FunctionImpl("q", att_list.get(0), att_list.get(1)));
+		func_list.add(new FunctionImpl("h", att_list.get(0), att_list.get(2)));
+		func_list.add(new FunctionImpl("h1", att_list.get(2), att_list.get(3)));
+		func_list.add(new FunctionImpl("h2", att_list.get(2), att_list.get(4)));
+		func_list.add(new FunctionImpl("test", att_list.get(5), att_list.get(1)));
+		
+		DataSchemaImpl schema = new DataSchemaImpl(name,att_list,func_list);
+		DataSchemaValidator validator = new DataSchemaValidator(schema);
+		
+		assertFalse(validator.getValidation());
+	}
+	
+	/**
+	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
+	 */
+	@Test
+	public void testGetValidation5() {
+		//Validation of a schema containing a node not linked to the root
+		String name = "S";
+		ArrayList<Attribute> att_list = new ArrayList<Attribute>();
+		ArrayList<Function> func_list = new ArrayList<Function>();
+		//Defining attributes
+		att_list.add(new AttributeImpl("O", DataType.ID));
+		att_list.add(new AttributeImpl("Quantity",DataType.INTEGER));
+		att_list.add(new AttributeImpl("Product", DataType.STRING));
+		att_list.add(new AttributeImpl("Supplier", DataType.STRING));
+		att_list.add(new AttributeImpl("Category", DataType.STRING));
+		att_list.add(new AttributeImpl("Disconnected node", DataType.ID));
+		
+		//Defining functions
+		func_list.add(new FunctionImpl("q", att_list.get(0), att_list.get(1)));
+		func_list.add(new FunctionImpl("h", att_list.get(0), att_list.get(2)));
+		func_list.add(new FunctionImpl("h1", att_list.get(2), att_list.get(3)));
+		func_list.add(new FunctionImpl("h2", att_list.get(2), att_list.get(4)));
+		
+		DataSchemaImpl schema = new DataSchemaImpl(name,att_list,func_list);
+		DataSchemaValidator validator = new DataSchemaValidator(schema);
+		
+		assertFalse(validator.getValidation());
 	}
 }

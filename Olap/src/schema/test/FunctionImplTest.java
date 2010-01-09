@@ -3,13 +3,12 @@
  */
 package schema.test;
 
-import static org.junit.Assert.fail;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import static org.junit.Assert.*;
 import org.junit.Test;
+
+import schema.Attribute.*;
+import schema.implementation.FunctionImpl;
+import schema.implementation.AttributeImpl;;
 
 
 /**
@@ -18,39 +17,11 @@ import org.junit.Test;
  */
 public class FunctionImplTest {
 	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	/**
 	 * Test method for {@link schema.implementation.FunctionImpl#FunctionImpl(java.lang.String, schema.Attribute, schema.Attribute)}.
 	 */
 	@Test
 	public void testFunctionImpl() {
-		fail("Not yet implemented"); // TODO
+		new FunctionImpl("f", new AttributeImpl("O",DataType.ID), new AttributeImpl("Quantity",DataType.INTEGER));
 	}
 
 	/**
@@ -58,7 +29,8 @@ public class FunctionImplTest {
 	 */
 	@Test
 	public void testGetName() {
-		fail("Not yet implemented"); // TODO
+		FunctionImpl func = new FunctionImpl("f", new AttributeImpl("O",DataType.ID), new AttributeImpl("Quantity",DataType.INTEGER));
+		assertEquals("f", func.getName());
 	}
 
 	/**
@@ -66,7 +38,8 @@ public class FunctionImplTest {
 	 */
 	@Test
 	public void testGetDomain() {
-		fail("Not yet implemented"); // TODO
+		FunctionImpl func = new FunctionImpl("f", new AttributeImpl("O",DataType.ID), new AttributeImpl("Quantity",DataType.INTEGER));
+		assertEquals(new AttributeImpl("O",DataType.ID),func.getDomain());
 	}
 
 	/**
@@ -74,6 +47,7 @@ public class FunctionImplTest {
 	 */
 	@Test
 	public void testGetRange() {
-		fail("Not yet implemented"); // TODO
+		FunctionImpl func = new FunctionImpl("f", new AttributeImpl("O",DataType.ID), new AttributeImpl("Quantity",DataType.INTEGER));
+		assertEquals(new AttributeImpl("Quantity",DataType.INTEGER),func.getRange());
 	}
 }

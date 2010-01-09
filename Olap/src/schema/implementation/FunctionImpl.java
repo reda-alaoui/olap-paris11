@@ -36,5 +36,16 @@ public class FunctionImpl implements Function {
 		return range;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+	    if ( this == obj ) return true;
+
+	    if ( !(obj instanceof FunctionImpl) ) return false;
+
+	    FunctionImpl func = (FunctionImpl)obj;
+
+	    return func.getDomain().equals(domain) && func.getName().equals(name) && func.getRange().equals(range);
+	}
+	
 	
 }

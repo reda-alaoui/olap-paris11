@@ -27,4 +27,17 @@ public class AttributeImpl implements Attribute {
 	public String getName() {
 		return name;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+	    if ( this == obj ) return true;
+
+	    if ( !(obj instanceof AttributeImpl) ) return false;
+
+	    AttributeImpl att = (AttributeImpl)obj;
+
+	    return att.getDataType().equals(dataType) && att.getName().equals(name);
+	}
+	
+	
 }

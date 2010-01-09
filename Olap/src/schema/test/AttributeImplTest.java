@@ -3,13 +3,12 @@
  */
 package schema.test;
 
-import static org.junit.Assert.fail;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import static org.junit.Assert.*;
 import org.junit.Test;
+
+import schema.Attribute;
+import schema.Attribute.DataType;
+import schema.implementation.AttributeImpl;
 
 
 /**
@@ -18,39 +17,11 @@ import org.junit.Test;
  */
 public class AttributeImplTest {
 	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	/**
 	 * Test method for {@link schema.implementation.AttributeImpl#AttributeImpl(java.lang.String, schema.Attribute.DataType)}.
 	 */
 	@Test
 	public void testAttributeImpl() {
-		fail("Not yet implemented"); // TODO
+		new AttributeImpl("Quantity", DataType.INTEGER);
 	}
 
 	/**
@@ -58,7 +29,11 @@ public class AttributeImplTest {
 	 */
 	@Test
 	public void testGetDataType() {
-		fail("Not yet implemented"); // TODO
+		Attribute att = new AttributeImpl("City",DataType.STRING);
+		assertEquals(DataType.STRING, att.getDataType());
+		
+		att = new AttributeImpl("City",null);
+		assertEquals(null, att.getDataType());
 	}
 
 	/**
@@ -66,6 +41,13 @@ public class AttributeImplTest {
 	 */
 	@Test
 	public void testGetName() {
-		fail("Not yet implemented"); // TODO
+		Attribute att = new AttributeImpl("City",DataType.STRING);
+		assertEquals("City", att.getName());
+		
+		att = new AttributeImpl(null,DataType.STRING);
+		assertEquals(null, att.getName());
+		
+		att = new AttributeImpl("",DataType.STRING);
+		assertEquals("", att.getName());
 	}
 }

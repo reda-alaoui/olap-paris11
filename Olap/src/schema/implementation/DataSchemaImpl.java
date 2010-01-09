@@ -20,8 +20,10 @@ public class DataSchemaImpl implements DataSchema {
 	private ArrayList<Attribute> attribute_list;
 	private ArrayList<Function> function_list;
 
-	public DataSchemaImpl(String name) {
+	public DataSchemaImpl(String name, ArrayList<Attribute> attribute_list, ArrayList<Function> function_list) {
 		this.name = name;
+		this.attribute_list = attribute_list;
+		this.function_list = function_list;
 	}
 
 	@Override
