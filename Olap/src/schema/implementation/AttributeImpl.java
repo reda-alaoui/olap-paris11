@@ -39,5 +39,4 @@ public class AttributeImpl implements Attribute {
 	    return att.getDataType().equals(dataType) && att.getName().equals(name);
 	}
 	
-	
 }

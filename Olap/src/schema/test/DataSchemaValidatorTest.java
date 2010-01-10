@@ -5,17 +5,22 @@ package schema.test;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import org.jdom.JDOMException;
 import org.junit.Test;
 
 import schema.Attribute;
+import schema.DataSchema;
 import schema.Function;
 import schema.Attribute.DataType;
 import schema.implementation.AttributeImpl;
 import schema.implementation.DataSchemaImpl;
 import schema.implementation.FunctionImpl;
 import schema.utility.DataSchemaValidator;
+import schema.utility.DataSchemaXMLLoader;
 
 
 /**
@@ -191,5 +196,19 @@ public class DataSchemaValidatorTest {
 		DataSchemaValidator validator = new DataSchemaValidator(schema);
 		
 		assertFalse(validator.getValidation());
+	}
+	
+	/**
+	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
+	 * @throws IOException 
+	 * @throws JDOMException 
+	 */
+	@Test
+	public void testGetValidation6() throws JDOMException, IOException {
+		DataSchemaXMLLoader loader = new DataSchemaXMLLoader("S",new File("test.xml"));
+		DataSchema schema = loader.getSchema();
+		DataSchemaValidator validator = new DataSchemaValidator(schema);
+		
+		assertTrue(validator.getValidation());
 	}
 }
