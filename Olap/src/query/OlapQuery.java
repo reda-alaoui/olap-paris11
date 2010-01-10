@@ -7,6 +7,6 @@ package query;
  * @author Reda
  *
  */
-public interface OlapQuery {
+public interface OlapQuery extends PathExpression{
 
 }

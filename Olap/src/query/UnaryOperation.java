@@ -7,6 +7,6 @@ package query;
  * @author Reda
  *
  */
-public interface UnaryOperation {
+public interface UnaryOperation extends PathExpression{
 
 }
