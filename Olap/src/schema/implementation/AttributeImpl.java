@@ -32,9 +32,9 @@ public class AttributeImpl implements Attribute {
 	public boolean equals(Object obj) {
 	    if ( this == obj ) return true;
 
-	    if ( !(obj instanceof AttributeImpl) ) return false;
+	    if ( !(obj instanceof Attribute) ) return false;
 
-	    AttributeImpl att = (AttributeImpl)obj;
+	    Attribute att = (Attribute)obj;
 
 	    return att.getDataType().equals(dataType) && att.getName().equals(name);
 	}

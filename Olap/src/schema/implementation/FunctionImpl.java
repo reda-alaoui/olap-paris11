@@ -40,9 +40,9 @@ public class FunctionImpl implements Function {
 	public boolean equals(Object obj) {
 	    if ( this == obj ) return true;
 
-	    if ( !(obj instanceof FunctionImpl) ) return false;
+	    if ( !(obj instanceof Function) ) return false;
 
-	    FunctionImpl func = (FunctionImpl)obj;
+	    Function func = (Function)obj;
 
 	    return func.getDomain().equals(domain) && func.getName().equals(name) && func.getRange().equals(range);
 	}

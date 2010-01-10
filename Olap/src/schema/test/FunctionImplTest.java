@@ -6,6 +6,7 @@ package schema.test;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import schema.Function;
 import schema.Attribute.*;
 import schema.implementation.FunctionImpl;
 import schema.implementation.AttributeImpl;;
@@ -29,7 +30,7 @@ public class FunctionImplTest {
 	 */
 	@Test
 	public void testGetName() {
-		FunctionImpl func = new FunctionImpl("f", new AttributeImpl("O",DataType.ID), new AttributeImpl("Quantity",DataType.INTEGER));
+		Function func = new FunctionImpl("f", new AttributeImpl("O",DataType.ID), new AttributeImpl("Quantity",DataType.INTEGER));
 		assertEquals("f", func.getName());
 	}
 
@@ -38,7 +39,7 @@ public class FunctionImplTest {
 	 */
 	@Test
 	public void testGetDomain() {
-		FunctionImpl func = new FunctionImpl("f", new AttributeImpl("O",DataType.ID), new AttributeImpl("Quantity",DataType.INTEGER));
+		Function func = new FunctionImpl("f", new AttributeImpl("O",DataType.ID), new AttributeImpl("Quantity",DataType.INTEGER));
 		assertEquals(new AttributeImpl("O",DataType.ID),func.getDomain());
 	}
 
@@ -47,7 +48,7 @@ public class FunctionImplTest {
 	 */
 	@Test
 	public void testGetRange() {
-		FunctionImpl func = new FunctionImpl("f", new AttributeImpl("O",DataType.ID), new AttributeImpl("Quantity",DataType.INTEGER));
+		Function func = new FunctionImpl("f", new AttributeImpl("O",DataType.ID), new AttributeImpl("Quantity",DataType.INTEGER));
 		assertEquals(new AttributeImpl("Quantity",DataType.INTEGER),func.getRange());
 	}
 }
