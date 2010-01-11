@@ -10,8 +10,8 @@ import schema.Attribute;
  *
  */
 public class AttributeImpl implements Attribute {
-	private String name;
-	private DataType dataType;
+	private final String name;
+	private final DataType dataType;
 	
 	public AttributeImpl(String name, DataType dataType) {
 		this.name = name;
@@ -26,6 +26,11 @@ public class AttributeImpl implements Attribute {
 	@Override
 	public String getName() {
 		return name;
+	}
+	
+	@Override
+	public int hashCode() {
+		return (31 + name.hashCode()) * 31 + dataType.hashCode();
 	}
 
 	@Override

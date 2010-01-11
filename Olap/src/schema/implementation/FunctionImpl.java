@@ -11,9 +11,9 @@ import schema.Function;
  *
  */
 public class FunctionImpl implements Function {
-	private String name;
-	private Attribute domain;
-	private Attribute range;
+	private final String name;
+	private final Attribute domain;
+	private final Attribute range;
 
 	public FunctionImpl(String name, Attribute domain, Attribute range) {
 		this.name = name;
@@ -37,6 +37,11 @@ public class FunctionImpl implements Function {
 	}
 	
 	@Override
+	public int hashCode() {
+		return 31 * (31 * (31 + name.hashCode()) + domain.hashCode()) + range.hashCode();
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 	    if ( this == obj ) return true;
 
@@ -46,6 +51,4 @@ public class FunctionImpl implements Function {
 
 	    return func.getDomain().equals(domain) && func.getName().equals(name) && func.getRange().equals(range);
 	}
-	
-	
 }
