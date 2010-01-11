@@ -19,20 +19,31 @@ public class DataSchemaValidator {
 	private DataSchema schema;
 	private boolean validation;
 	
+	/** 
+	 * @param The schema to validate
+	 */
 	public DataSchemaValidator(DataSchema schema){
 		this.schema = schema;
 		this.validation = validate();
 	}
 	
+	/**
+	 * @return Schema's validation
+	 */
 	public boolean getValidation(){
 		return validation;
 	}
 	
+	/**
+	 * @return True if schema is valid, False if not
+	 */
 	private Boolean validate(){
 		return isAttributeNameDistinct()&&isFunctionNameDistinct()&&isExactlyOneRoot()&&isAcyclic()&&isOnePathDistant();
 	}
 	
-	// The label of each attribute in a schema is distinct
+	/**
+	 * @return True if the label of each attribute in the schema is distinct, False if not
+	 */
 	private boolean isAttributeNameDistinct(){
 		boolean ok;
 		Iterator<Attribute> attribute_iterator = schema.getAttributeIterator();
@@ -47,7 +58,9 @@ public class DataSchemaValidator {
 		return true;
 	}
 	
-	// The label of each function in a schema is distinct 
+	/**
+	 * @return True if the label of each function in the schema is distinct, False if not
+	 */
 	private boolean isFunctionNameDistinct(){
 		boolean ok;
 		Iterator<Function> function_iterator = schema.getFunctionIterator();
@@ -62,7 +75,9 @@ public class DataSchemaValidator {
 		return true;
 	}
 	
-	// A data schema has exactly one root
+	/**
+	 * @return True if the schema has exactly one root, False if not
+	 */
 	private boolean isExactlyOneRoot(){
 		int i=0;
 		Iterator<Attribute> attribute_iterator = schema.getAttributeIterator();
@@ -79,11 +94,16 @@ public class DataSchemaValidator {
 		return i==1;
 	}
 	
+	/**
+	 * @return True if the schema is acyclic, False if not
+	 */
 	private boolean isAcyclic(){
 		return true;
 	}
 	
-	// Each node in a data schema has at least one path from the root of the schema 
+	/**
+	 * @return True if each node of the schema is at least one path from the root, False if not
+	 */
 	private boolean isOnePathDistant(){
 		// First, we find the root
 		boolean root_found = false;

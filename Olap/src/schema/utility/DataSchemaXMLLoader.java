@@ -29,6 +29,12 @@ public class DataSchemaXMLLoader {
 	
 	private DataSchema schema;
 	
+	/**
+	 * @param The name of the data schema to generate
+	 * @param The xml file
+	 * @throws JDOMException
+	 * @throws IOException
+	 */
 	public DataSchemaXMLLoader(String name,File xml_file) throws JDOMException, IOException {
 		Document document=null;
 		SAXBuilder sxb = new SAXBuilder();
