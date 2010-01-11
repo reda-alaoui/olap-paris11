@@ -5,6 +5,7 @@ package schema.implementation;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import schema.Attribute;
 import schema.DataSchema;
@@ -16,16 +17,16 @@ import schema.Function;
  */
 public class DataSchemaImpl implements DataSchema {
 
-	private String name;
-	private ArrayList<Attribute> attribute_list;
-	private ArrayList<Function> function_list;
+	private final String name;
+	private final List<Attribute> attribute_list;
+	private final List<Function> function_list;
 
-	public DataSchemaImpl(String name, ArrayList<Attribute> attribute_list, ArrayList<Function> function_list) {
+	public DataSchemaImpl(String name, List<Attribute> attribute_list, List<Function> function_list) {
 		this.name = name;
-		this.attribute_list = attribute_list;
-		this.function_list = function_list;
+		this.attribute_list = new ArrayList<Attribute>(attribute_list);
+		this.function_list = new ArrayList<Function>(function_list);
 	}
-
+	
 	@Override
 	public String getName() {
 		return name;
