@@ -9,10 +9,9 @@ package schema;
  */
 public interface Function {
 
-	public String getName();
+	String getName();
 	
-	public Attribute getDomain();
+	Attribute getDomain();
 	
-	public Attribute getRange();
-	
+	Attribute getRange();
 }

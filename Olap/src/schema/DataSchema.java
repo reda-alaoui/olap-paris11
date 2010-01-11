@@ -11,17 +11,17 @@ import java.util.Iterator;
  */
 public interface DataSchema {
 	
-	public String getName();
+	String getName();
 	
-	public Iterator<Attribute> getAttributeIterator();
+	Iterator<Attribute> getAttributeIterator();
 	
-	public Iterator<Function> getFunctionIterator();
+	Iterator<Function> getFunctionIterator();
 	
-	public Attribute getAttributeByName(String attribute_name);
+	Attribute getAttributeByName(String attribute_name);
 	
-	public Function getFunctionByRange(Attribute function_range);
+	Function getFunctionByRange(Attribute function_range);
 	
-	public Function getFunctionByName(String function_name);
+	Function getFunctionByName(String function_name);
 	
-	public Function getFunctionByDomain(Attribute function_domain);
+	Function getFunctionByDomain(Attribute function_domain);
 }

@@ -9,14 +9,14 @@ package schema;
  */
 public interface Attribute {
 	
-	public String getName();
+	String getName();
 	
-	public enum DataType{
+	enum DataType{
 		ID,
 		INTEGER,
 		NUMBER,
 		STRING
 	}
 	
-	public DataType getDataType();
+	DataType getDataType();
 }
