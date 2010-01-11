@@ -1,0 +1,15 @@
+<!ELEMENT schema (attributes, functions)>
+<!ATTLIST schema
+		  name CDATA #REQUIRED>
+<!ELEMENT attributes (attribute)*>
+<!ELEMENT attribute EMPTY>
+<!ATTLIST attribute
+		  name CDATA #REQUIRED
+		  type (ID|INTEGER|NUMBER|STRING) #REQUIRED
+		  label CDATA #IMPLIED>
+<!ELEMENT functions (function)*>
+<!ELEMENT function EMPTY>
+<!ATTLIST function
+          name CDATA #REQUIRED
+          domain CDATA #REQUIRED
+          range CDATA #REQUIRED>

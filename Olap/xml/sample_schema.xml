@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema SYSTEM "schema.dtd" >
+<schema name="">
+  <attributes>
+    <attribute name="o" type="ID"/>
+    <attribute name="date" type="STRING"/>
+    <attribute name="month" type="STRING"/>
+    <attribute name="yeat" type="STRING"/>
+    <attribute name="store" type="STRING"/>
+    <attribute name="city" type="STRING"/>
+    <attribute name="region" type="STRING"/>
+    <attribute name="country" type="STRING"/>
+    <attribute name="product" type="STRING"/>
+    <attribute name="category" type="STRING"/>
+    <attribute name="supplier" type="STRING"/>
+    <attribute name="quantity" type="INTEGER"/>
+  </attributes>
+  <functions>
+    <function name="f"  domain="o" range="date"/>
+    <function name="f1"  domain="date" range="month"/>
+    <function name="f2"  domain="month" range="date"/>
+    <function name="g"  domain="o" range="store"/>
+    <function name="g1"  domain="store" range="city"/>
+    <function name="g2"  domain="city" range="region"/>
+    <function name="g3"  domain="region" range="country"/>
+    <function name="h"  domain="o" range="product"/>
+    <function name="h1"  domain="product" range="category"/>
+    <function name="h2"  domain="product" range="supplier"/>
+    <function name="q"  domain="o" range="quantity"/>
+  </functions>
+</schema>
