@@ -19,9 +19,9 @@ public interface DataSchema {
 	
 	Attribute getAttributeByName(String attribute_name);
 	
-	Function getFunctionByRange(Attribute function_range);
+	Iterator<Function> getFunctionsByRange(Attribute function_range);
 	
 	Function getFunctionByName(String function_name);
 	
-	Function getFunctionByDomain(Attribute function_domain);
+	Iterator<Function> getFunctionsByDomain(Attribute function_domain);
 }

@@ -29,7 +29,7 @@ public class DataSchemaValidator {
 	}
 	
 	private Boolean validate(){
-		return isAttributeNameDistinct()&&isFunctionNameDistinct()&&isExactlyOneRoot()&&isOnePathDistant();
+		return isAttributeNameDistinct()&&isFunctionNameDistinct()&&isExactlyOneRoot()&&isAcyclic()&&isOnePathDistant();
 	}
 	
 	// The label of each attribute in a schema is distinct
@@ -40,6 +40,7 @@ public class DataSchemaValidator {
 		while(attribute_iterator.hasNext()){
 			ok = attribute_set.add(attribute_iterator.next().getName());
 			if(!ok){
+				System.out.println("Two attributes have the same label");
 				return false;
 			}
 		}
@@ -54,6 +55,7 @@ public class DataSchemaValidator {
 		while(function_iterator.hasNext()){
 			ok = function_set.add(function_iterator.next().getName());
 			if(!ok){
+				System.out.println("Two functions have the same label");
 				return false;
 			}
 		}
@@ -67,11 +69,18 @@ public class DataSchemaValidator {
 		Attribute att;
 		while(attribute_iterator.hasNext()){
 			att = attribute_iterator.next();
-			if(schema.getFunctionByDomain(att)!= null && schema.getFunctionByRange(att) == null){
+			if(schema.getFunctionsByDomain(att).hasNext() && !schema.getFunctionsByRange(att).hasNext()){
 				i++;
 			}
 		}
+		if(i!=1){
+			System.out.println("Wrong number of roots");
+		}
 		return i==1;
+	}
+	
+	private boolean isAcyclic(){
+		return true;
 	}
 	
 	// Each node in a data schema has at least one path from the root of the schema 
@@ -84,7 +93,7 @@ public class DataSchemaValidator {
 		
 		while(attribute_iterator.hasNext()&&!root_found){
 			att = attribute_iterator.next();
-			if(schema.getFunctionByDomain(att)!= null && schema.getFunctionByRange(att) == null){
+			if(schema.getFunctionsByDomain(att).hasNext() && !schema.getFunctionsByRange(att).hasNext()){
 				root=att;
 				root_found = true;
 			}
@@ -93,6 +102,7 @@ public class DataSchemaValidator {
 		// Now we test that each node is linked to the root
 		boolean root_reached;
 		attribute_iterator = schema.getAttributeIterator();
+		Iterator<Function> func_iterator;
 		Function func;
 		
 		while(attribute_iterator.hasNext()){
@@ -101,15 +111,19 @@ public class DataSchemaValidator {
 				root_reached = false;
 				
 				while(!root_reached){
-					func = schema.getFunctionByRange(att);
-					if(func == null){
-						return false;
-					}
-					else if(func.getDomain().equals(root)){
-						root_reached = true;
+					func_iterator = schema.getFunctionsByRange(att);
+					if(func_iterator.hasNext()){
+						func = func_iterator.next();
+					    if(func.getDomain().equals(root)){
+							root_reached = true;
+						}
+						else{
+							att = func.getDomain();
+						}
 					}
 					else{
-						att = func.getDomain();
+						System.out.println("At least one node is not linked to the root");
+						return false;
 					}
 				}
 			}

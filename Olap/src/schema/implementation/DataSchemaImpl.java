@@ -46,16 +46,17 @@ public class DataSchemaImpl implements DataSchema {
 	}
 
 	@Override
-	public Function getFunctionByDomain(Attribute function_domain) {
+	public Iterator<Function> getFunctionsByDomain(Attribute function_domain) {
 		Iterator<Function> function_iterator = getFunctionIterator();
+		List<Function> func_domain_iterator = new ArrayList<Function>();
 		Function func;
 		while(function_iterator.hasNext()){
 			func = function_iterator.next();
 			if(func.getDomain().equals(function_domain)){
-				return func;
+				func_domain_iterator.add(func);
 			}
 		}
-		return null;
+		return func_domain_iterator.iterator();
 	}
 
 	@Override
@@ -72,16 +73,17 @@ public class DataSchemaImpl implements DataSchema {
 	}
 
 	@Override
-	public Function getFunctionByRange(Attribute function_range) {
+	public Iterator<Function> getFunctionsByRange(Attribute function_range) {
 		Iterator<Function> function_iterator = getFunctionIterator();
+		List<Function> func_range_iterator = new ArrayList<Function>();
 		Function func;
 		while(function_iterator.hasNext()){
 			func = function_iterator.next();
 			if(func.getRange().equals(function_range)){
-				return func;
+				func_range_iterator.add(func);
 			}
 		}
-		return null;
+		return func_range_iterator.iterator();
 	}
 
 	@Override

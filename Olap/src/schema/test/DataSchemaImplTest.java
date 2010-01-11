@@ -96,7 +96,7 @@ public class DataSchemaImplTest {
 	}
 
 	@Test
-	public void testGetFunctionByDomain() {
+	public void testGetFunctionsByDomain() {
 		String name = "S";
 		ArrayList<Attribute> att_list = new ArrayList<Attribute>();
 		ArrayList<Function> func_list = new ArrayList<Function>();
@@ -115,8 +115,9 @@ public class DataSchemaImplTest {
 		
 		DataSchemaImpl schema = new DataSchemaImpl(name,att_list,func_list);
 		
-		assertEquals(func_list.get(0), schema.getFunctionByDomain(att_list.get(0)));
-		assertEquals(func_list.get(2), schema.getFunctionByDomain(att_list.get(2)));
+		
+		assertEquals(func_list.get(0), schema.getFunctionsByDomain(att_list.get(0)).next());
+		assertEquals(func_list.get(2), schema.getFunctionsByDomain(att_list.get(2)).next());
 	}
 
 	@Test
@@ -147,7 +148,7 @@ public class DataSchemaImplTest {
 	}
 
 	@Test
-	public void testGetFunctionByRange() {
+	public void testGetFunctionsByRange() {
 		String name = "S";
 		ArrayList<Attribute> att_list = new ArrayList<Attribute>();
 		ArrayList<Function> func_list = new ArrayList<Function>();
@@ -166,10 +167,10 @@ public class DataSchemaImplTest {
 		
 		DataSchemaImpl schema = new DataSchemaImpl(name,att_list,func_list);
 		
-		assertEquals(func_list.get(0), schema.getFunctionByRange(att_list.get(1)));
-		assertEquals(func_list.get(1), schema.getFunctionByRange(att_list.get(2)));
-		assertEquals(func_list.get(2), schema.getFunctionByRange(att_list.get(3)));
-		assertEquals(func_list.get(3), schema.getFunctionByRange(att_list.get(4)));
+		assertEquals(func_list.get(0), schema.getFunctionsByRange(att_list.get(1)).next());
+		assertEquals(func_list.get(1), schema.getFunctionsByRange(att_list.get(2)).next());
+		assertEquals(func_list.get(2), schema.getFunctionsByRange(att_list.get(3)).next());
+		assertEquals(func_list.get(3), schema.getFunctionsByRange(att_list.get(4)).next());
 	}
 
 	@Test
