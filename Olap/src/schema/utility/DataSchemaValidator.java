@@ -151,6 +151,7 @@ public class DataSchemaValidator {
 			 * Therefore the temporary schema is cyclic and so is the genuine schema.
 			 */
 			else{
+				System.out.println("The schema is cyclic");
 				return false;
 			}
 		}
