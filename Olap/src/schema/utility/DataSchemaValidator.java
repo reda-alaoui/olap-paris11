@@ -3,13 +3,16 @@
  */
 package schema.utility;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import schema.Attribute;
 import schema.DataSchema;
 import schema.Function;
+import schema.implementation.DataSchemaImpl;
 
 /**
  * @author Reda
@@ -98,6 +101,64 @@ public class DataSchemaValidator {
 	 * @return True if the schema is acyclic, False if not
 	 */
 	private boolean isAcyclic(){
+		//	First, we create a temporary schema, clone of the genuine schema
+		Iterator<Attribute> att_iterator = schema.getAttributeIterator();
+		Iterator<Function> func_iterator = schema.getFunctionIterator();
+		List<Attribute> att_list = new ArrayList<Attribute>();
+		List<Function> func_list = new ArrayList<Function>();
+		Attribute att;
+		Function func;
+		
+		while(att_iterator.hasNext()){
+			att_list.add(att_iterator.next());
+		}
+		while(func_iterator.hasNext()){
+			func_list.add(func_iterator.next());
+		}
+		//	Creation of the temporary schema
+		DataSchema temp_schema = new DataSchemaImpl("", att_list, func_list);
+		
+		att_iterator = temp_schema.getAttributeIterator();
+		
+		//	While schema's list of attributes is not empty
+		while(temp_schema.getAttributeIterator().hasNext()){
+			
+			//	If the Attribute iterator has next value
+			if(att_iterator.hasNext()){
+				att = att_iterator.next();
+				
+				//	If the attribute parsed is a leaf (it has no target)
+				if(!temp_schema.getFunctionsByDomain(att).hasNext()){
+					
+					/*	Removing the attribute and all functions
+					targeting it from the temporary schema*/
+					func_iterator = temp_schema.getFunctionIterator();
+					while(func_iterator.hasNext()){
+						func = func_iterator.next();
+						if(func.getRange().equals(att)){
+							func_iterator.remove();
+						}
+					}
+					att_iterator.remove();
+					
+					//	Reinitializing the Attribute iterator
+					att_iterator = temp_schema.getAttributeIterator();
+				}
+			}
+			/* 
+			 * If Attribute iterator end is reached, the temporary schema contains
+			 * remaining attributes which are domains of the remaining functions.
+			 * Therefore the temporary schema is cyclic and so is the genuine schema.
+			 */
+			else{
+				return false;
+			}
+		}
+		/*	
+		 * The loop stopped therefore there is no more attribute in the temporary schema
+		 * and that proves that the genuine schema is acyclic
+		 */
+		
 		return true;
 	}
 	

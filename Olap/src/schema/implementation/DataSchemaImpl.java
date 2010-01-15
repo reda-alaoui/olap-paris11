@@ -15,7 +15,7 @@ import schema.Function;
  * @author Reda
  *
  */
-public class DataSchemaImpl implements DataSchema {
+public class DataSchemaImpl implements DataSchema{
 
 	private final String name;
 	private final List<Attribute> attribute_list;
@@ -95,6 +95,4 @@ public class DataSchemaImpl implements DataSchema {
 	public Iterator<Function> getFunctionIterator() {
 		return function_list.iterator();
 	}
-
-
 }

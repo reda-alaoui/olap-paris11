@@ -71,8 +71,8 @@ public class DataSchemaValidatorTest {
 		//Defining functions
 		func_list.add(new FunctionImpl("q", att_list.get(0), att_list.get(1)));
 		func_list.add(new FunctionImpl("h", att_list.get(0), att_list.get(2)));
-		func_list.add(new FunctionImpl("h1", att_list.get(2), att_list.get(3)));
-		func_list.add(new FunctionImpl("h2", att_list.get(2), att_list.get(4)));
+		func_list.add(new FunctionImpl("h2", att_list.get(2), att_list.get(3)));
+		func_list.add(new FunctionImpl("h1", att_list.get(2), att_list.get(4)));
 		
 		DataSchemaImpl schema = new DataSchemaImpl(name,att_list,func_list);
 		DataSchemaValidator validator = new DataSchemaValidator(schema);
@@ -208,6 +208,6 @@ public class DataSchemaValidatorTest {
 		DataSchema schema = loader.getSchema();
 		DataSchemaValidator validator = new DataSchemaValidator(schema);
 		
-		assertTrue(validator.getValidation());
+		assertFalse(validator.getValidation());
 	}
 }
