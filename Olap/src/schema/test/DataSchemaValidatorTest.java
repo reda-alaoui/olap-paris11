@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.jdom.JDOMException;
 import org.junit.Test;
 
 import schema.Attribute;
@@ -204,8 +203,8 @@ public class DataSchemaValidatorTest {
 	 * @throws JDOMException 
 	 */
 	@Test
-	public void testGetValidation6() throws JDOMException, IOException {
-		DataSchemaXMLLoader loader = new DataSchemaXMLLoader("S",new File("test.xml"));
+	public void testGetValidation6() {
+		DataSchemaXMLLoader loader = new DataSchemaXMLLoader(new File("xml/sample_schema.xml"));
 		DataSchema schema = loader.getSchema();
 		DataSchemaValidator validator = new DataSchemaValidator(schema);
 		

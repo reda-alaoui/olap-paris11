@@ -5,8 +5,6 @@ package schema.test;
 
 import java.io.File;
 import java.io.IOException;
-
-import org.jdom.JDOMException;
 import org.junit.Test;
 
 import schema.utility.DataSchemaXMLLoader;
@@ -23,8 +21,8 @@ public class DataSchemaXMLLoaderTest {
 	 * @throws JDOMException 
 	 */
 	@Test
-	public void testDataSchemaXMLLoader() throws JDOMException, IOException {
-		new DataSchemaXMLLoader("S",new File("test.xml"));
+	public void testDataSchemaXMLLoader(){
+		new DataSchemaXMLLoader(new File("xml/sample_schema.xml"));
 	}
 
 	/**
@@ -33,9 +31,8 @@ public class DataSchemaXMLLoaderTest {
 	 * @throws JDOMException 
 	 */
 	@Test
-	public void testGetSchema() throws JDOMException, IOException {
-		DataSchemaXMLLoader schema = new DataSchemaXMLLoader("S",new File("test.xml"));
+	public void testGetSchema(){
+		DataSchemaXMLLoader schema = new DataSchemaXMLLoader(new File("xml/sample_schema.xml"));
 		schema.getSchema();
-		
 	}
 }

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE schema SYSTEM "schema.dtd" >
-<schema name="">
+<schema name="S">
   <attributes>
     <attribute name="o" type="ID"/>
     <attribute name="date" type="STRING"/>
     <attribute name="month" type="STRING"/>
-    <attribute name="yeat" type="STRING"/>
     <attribute name="store" type="STRING"/>
     <attribute name="city" type="STRING"/>
     <attribute name="region" type="STRING"/>

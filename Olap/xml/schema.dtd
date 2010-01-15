@@ -5,8 +5,7 @@
 <!ELEMENT attribute EMPTY>
 <!ATTLIST attribute
 		  name CDATA #REQUIRED
-		  type (ID|INTEGER|NUMBER|STRING) #REQUIRED
-		  label CDATA #IMPLIED>
+		  type (ID|INTEGER|NUMBER|STRING) #REQUIRED>
 <!ELEMENT functions (function)*>
 <!ELEMENT function EMPTY>
 <!ATTLIST function
