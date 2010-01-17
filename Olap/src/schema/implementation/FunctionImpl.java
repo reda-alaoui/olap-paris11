@@ -21,22 +21,27 @@ public class FunctionImpl implements Function {
 		this.range = range;
 	}
 	
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public Attribute getDomain() {
 		return domain;
 	}
 
+	@Override
 	public Attribute getRange() {
 		return range;
 	}
 	
+	@Override
 	public int hashCode() {
 		return 31 * (31 * (31 + name.hashCode()) + domain.hashCode()) + range.hashCode();
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 	    if ( this == obj ) return true;
 
