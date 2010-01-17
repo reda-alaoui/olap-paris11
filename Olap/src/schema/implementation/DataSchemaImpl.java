@@ -27,12 +27,10 @@ public class DataSchemaImpl implements DataSchema{
 		this.function_list = new ArrayList<Function>(function_list);
 	}
 	
-	@Override
 	public String getName() {
 		return name;
 	}
 
-	@Override
 	public Attribute getAttributeByName(String attribute_name) {
 		Iterator<Attribute> attribute_iterator = getAttributeIterator();
 		Attribute att;
@@ -45,7 +43,6 @@ public class DataSchemaImpl implements DataSchema{
 		return null;
 	}
 
-	@Override
 	public Iterator<Function> getFunctionsByDomain(Attribute function_domain) {
 		Iterator<Function> function_iterator = getFunctionIterator();
 		List<Function> func_domain_iterator = new ArrayList<Function>();
@@ -59,7 +56,6 @@ public class DataSchemaImpl implements DataSchema{
 		return func_domain_iterator.iterator();
 	}
 
-	@Override
 	public Function getFunctionByName(String function_name) {
 		Iterator<Function> function_iterator = getFunctionIterator();
 		Function func;
@@ -72,7 +68,6 @@ public class DataSchemaImpl implements DataSchema{
 		return null;
 	}
 
-	@Override
 	public Iterator<Function> getFunctionsByRange(Attribute function_range) {
 		Iterator<Function> function_iterator = getFunctionIterator();
 		List<Function> func_range_iterator = new ArrayList<Function>();
@@ -86,12 +81,10 @@ public class DataSchemaImpl implements DataSchema{
 		return func_range_iterator.iterator();
 	}
 
-	@Override
 	public Iterator<Attribute> getAttributeIterator() {
 		return attribute_list.iterator();
 	}
 
-	@Override
 	public Iterator<Function> getFunctionIterator() {
 		return function_list.iterator();
 	}
