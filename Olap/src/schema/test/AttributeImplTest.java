@@ -14,6 +14,7 @@ import schema.implementation.AttributeImpl;
 /**
  * @author Reda
  *
+ *
  */
 public class AttributeImplTest {
 	/**
