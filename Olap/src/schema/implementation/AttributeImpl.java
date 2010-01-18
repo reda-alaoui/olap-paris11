@@ -7,6 +7,7 @@ import schema.Attribute;
 
 /**
  * @author Reda
+ * Implements Attribute interface
  *
  */
 public class AttributeImpl implements Attribute {
