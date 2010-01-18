@@ -19,8 +19,8 @@ import schema.implementation.DataSchemaImpl;
  *
  */
 public class DataSchemaValidator {
-	private DataSchema schema;
-	private boolean validation;
+	private final DataSchema schema;
+	private final boolean validation;
 	
 	/** 
 	 * @param The schema to validate

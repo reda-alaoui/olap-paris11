@@ -20,7 +20,7 @@ import schema.implementation.DataSchemaImpl;
  */
 public class DataSchemaXMLLoader {
 	
-	private DataSchema schema;
+	private final DataSchema schema;
 	
 	public DataSchemaXMLLoader(File xml_file){
 		SAXParserFactory factory = SAXParserFactory.newInstance();
