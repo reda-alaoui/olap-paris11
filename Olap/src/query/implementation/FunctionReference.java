@@ -3,10 +3,12 @@
  */
 package query.implementation;
 
+import query.PathExpression;
+
 /**
  * @author Reda
  *
  */
-public class FunctionReference {
+public class FunctionReference implements PathExpression{
 
 }
