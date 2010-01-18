@@ -4,7 +4,7 @@
 package query.implementation;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 import query.PathExpression;
 import schema.Attribute;
@@ -30,22 +30,36 @@ public class FunctionReference implements PathExpression{
 		this.referredFunction = referredFunction;
 	}
 
+	/**
+	 * @return the referredFunction this object referred to
+	 */
 	Function getRefferedFunction(){
 		return this.referredFunction;
 	}
 	
-
+	/**
+	 * Be carefull, referredFunction can be modify by other object and its domain can change.
+	 * @return the attribute from referredFunction's domain.
+	 * @see Function#getDomain();
+	 */
 	@Override
-	public List<Attribute> getDomain() {
+	public Iterator<Attribute> getDomain() {
 		ArrayList<Attribute> returnList = new ArrayList<Attribute>();
 		returnList.add(referredFunction.getDomain());
-		return returnList;
+		
+		return returnList.iterator();
 	}
 
+	/**
+	 * Be carefull, referredFunction can be modify by other object and its domain can change.
+	 * @return the attribute from referredFunction's domain.
+	 * @see Function#getRange();
+	 */
 	@Override
-	public List<Attribute> getRange() {
+	public Iterator<Attribute> getRange() {
 		ArrayList<Attribute> returnList = new ArrayList<Attribute>();
 		returnList.add(referredFunction.getRange());
-		return returnList;
+		
+		return returnList.iterator();
 	}
 }

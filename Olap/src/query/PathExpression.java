@@ -3,7 +3,7 @@
  */
 package query;
 
-import java.util.List;
+import java.util.Iterator;
 
 import schema.Attribute;
 
@@ -14,13 +14,13 @@ import schema.Attribute;
 public interface PathExpression {	
 	
 	/**
-	 * @return the domain as Attributes List
+	 * @return the domain as Attributes iterator
 	 */
-	List<Attribute> getDomain();
+	Iterator<Attribute> getDomain();
 	
 	/**
 	 * 
-	 * @return the range as Attributes List
+	 * @return the range as Attributes iterator
 	 */
-	List<Attribute> getRange();
+	Iterator<Attribute> getRange();
 }
