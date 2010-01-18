@@ -11,6 +11,7 @@ public interface Attribute {
 	
 	/**
 	 * @return Attribute's name
+	 * 
 	 */
 	String getName();
 	
