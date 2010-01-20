@@ -41,6 +41,7 @@ public class FunctionReference implements PathExpression {
 	 */
 	public FunctionReference(Function referredFunction) {
 		super();
+		//function is immutable, so we don't need to copy it
 		this.referredFunction = referredFunction;
 		
 		//save iterators now, because referredFunction is immutable
