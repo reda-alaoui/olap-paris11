@@ -1,10 +1,10 @@
 package query;
 
-public class RenameTestClass {
+public class NewRenameTestClass {
 
 	private String myAttr;
 
-	public RenameTestClass(String myAttr) {
+	public NewRenameTestClass(String myAttr) {
 		super();
 		this.myAttr = myAttr;
 	}
