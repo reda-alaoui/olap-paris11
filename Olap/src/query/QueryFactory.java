@@ -43,7 +43,7 @@ public interface QueryFactory {
 	 * 
 	 * @return
 	 */
-	FunctionReferenceImpl function(String name);
+	FunctionReference function(String name);
 	 
 	/**
 	 * Create a {@link Composition} by passing its two params ({@link PathExpression})
@@ -61,7 +61,7 @@ public interface QueryFactory {
 	 * 
 	 * @return
 	 */
-	PairingImpl pairing(PathExpression p1, PathExpression p2);
+	Pairing pairing(PathExpression p1, PathExpression p2);
 	
 	/**
 	 * Create a {@link ProjectionImpl} object by passing Path Expression and a list of attribute to restrict on
@@ -69,7 +69,7 @@ public interface QueryFactory {
 	 * @param selectList - the list of attributes to restrict on 
 	 * @return
 	 */
-	ProjectionImpl projection(PathExpression p, List<Attribute> selectList);
+	Projection projection(PathExpression p, List<Attribute> selectList);
 	
 	/**
 	 * Build the OlapQuery by passing its classifier, measure and aggregate operator.
