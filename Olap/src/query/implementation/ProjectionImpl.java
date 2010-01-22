@@ -7,14 +7,14 @@ import java.util.Iterator;
 import java.util.List;
 
 import query.PathExpression;
-import query.UnaryOperation;
+import query.Projection;
 import schema.Attribute;
 
 /**
  * The projection operator is used to restrict request on specific attributes.
  * It is composed of an Attribute List and a PathExpression
  */
-public class Projection implements UnaryOperation {
+public class ProjectionImpl implements Projection {
 
 	/**
 	 * The list of attributes to restrict on
@@ -31,7 +31,7 @@ public class Projection implements UnaryOperation {
 	 * @param selectedAttribute
 	 * @param pathExpression
 	 */
-	public Projection(List<Attribute> selectedAttribute,
+	public ProjectionImpl(List<Attribute> selectedAttribute,
 			PathExpression pathExpression) {
 		super();
 		this.selectedAttribute = selectedAttribute;
@@ -48,7 +48,8 @@ public class Projection implements UnaryOperation {
 		return null;
 	}
 	
-	List<Attribute> getSelectList(){
+	@Override
+	public List<Attribute> getSelectList(){
 		return selectedAttribute;
 	}
 

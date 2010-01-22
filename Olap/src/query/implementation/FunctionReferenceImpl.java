@@ -6,7 +6,7 @@ package query.implementation;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import query.PathExpression;
+import query.FunctionReference;
 import schema.Attribute;
 import schema.Function;
 
@@ -15,7 +15,7 @@ import schema.Function;
  * For example the simple path "g" is a FunctionReference. Object of this class
  * are immutable
  */
-public class FunctionReference implements PathExpression {
+public class FunctionReferenceImpl implements FunctionReference {
 
 	/**
 	 * This is the {@link #Function} this class referred to Function object are
@@ -33,13 +33,7 @@ public class FunctionReference implements PathExpression {
 	 */
 	private Iterator<Attribute> domainIterator;
 
-	/**
-	 * Construct FunctionReference using referredFunction as parameter
-	 * 
-	 * @param referredFunction
-	 *            - The function to refer to (immutable)
-	 */
-	public FunctionReference(Function referredFunction) {
+	public FunctionReferenceImpl(Function referredFunction) {
 		super();
 		//function is immutable, so we don't need to copy it
 		this.referredFunction = referredFunction;
@@ -55,26 +49,18 @@ public class FunctionReference implements PathExpression {
 		domainIterator = domainList.iterator();
 	}
 
-	/**
-	 * @return the referredFunction this object referred to
-	 */
-	Function getRefferedFunction() {
+
+	public Function getRefferedFunction() {
 		return this.referredFunction;
 	}
 
-	/**
-	 * @return the attribute from referredFunction's domain.
-	 * @see Function#getDomain();
-	 */
+	
 	@Override
 	public Iterator<Attribute> getDomain() {
 		return rangeIterator;
 	}
 
-	/**
-	 * @return the attribute from referredFunction's domain.
-	 * @see Function#getRange();
-	 */
+	
 	@Override
 	public Iterator<Attribute> getRange() {
 		return domainIterator;

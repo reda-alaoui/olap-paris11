@@ -3,14 +3,16 @@
  */
 package query.implementation;
 
-import query.BinaryOperation;
+import java.util.Iterator;
+import query.Composition;
 import query.PathExpression;
+import schema.Attribute;
 
 /**
  * @author Reda
  *
  */
-public class Composition implements BinaryOperation {
+public class CompositionImpl implements Composition {
 
 	@Override
 	public PathExpression getLeftOperand() {
@@ -20,6 +22,18 @@ public class Composition implements BinaryOperation {
 
 	@Override
 	public PathExpression getRightOperand() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Iterator<Attribute> getDomain() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Iterator<Attribute> getRange() {
 		// TODO Auto-generated method stub
 		return null;
 	}

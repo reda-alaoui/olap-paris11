@@ -2,10 +2,9 @@ package query;
 
 import java.util.List;
 
-import query.implementation.Composition;
-import query.implementation.FunctionReference;
-import query.implementation.Pairing;
-import query.implementation.Projection;
+import query.implementation.FunctionReferenceImpl;
+import query.implementation.PairingImpl;
+import query.implementation.ProjectionImpl;
 import schema.Attribute;
 
 /**
@@ -38,13 +37,13 @@ public interface QueryFactory {
 	static enum AggregationFunction {COUNT, SUM, MIN, MAX, AVG};
 	
 	/**
-	 * Create a {@link FunctionReference} by passing its name
+	 * Create a {@link FunctionReferenceImpl} by passing its name
 	 * @param name - the name of the function
 	 * @see function of schema
 	 * 
 	 * @return
 	 */
-	FunctionReference function(String name);
+	FunctionReferenceImpl function(String name);
 	 
 	/**
 	 * Create a {@link Composition} by passing its two params ({@link PathExpression})
@@ -56,21 +55,21 @@ public interface QueryFactory {
 	Composition composition(PathExpression p1, PathExpression p2);
 	
 	/**
-	 * Create a {@link Pairing} by passing its two params ({@link PathExpression})
+	 * Create a {@link PairingImpl} by passing its two params ({@link PathExpression})
 	 * @param p1 - expression1
 	 * @param p2 - expression2
 	 * 
 	 * @return
 	 */
-	Pairing pairing(PathExpression p1, PathExpression p2);
+	PairingImpl pairing(PathExpression p1, PathExpression p2);
 	
 	/**
-	 * Create a {@link Projection} object by passing Path Expression and a list of attribute to restrict on
+	 * Create a {@link ProjectionImpl} object by passing Path Expression and a list of attribute to restrict on
 	 * @param p - the PathExpression
 	 * @param selectList - the list of attributes to restrict on 
 	 * @return
 	 */
-	Projection projection(PathExpression p, List<Attribute> selectList);
+	ProjectionImpl projection(PathExpression p, List<Attribute> selectList);
 	
 	/**
 	 * Build the OlapQuery by passing its classifier, measure and aggregate operator.
