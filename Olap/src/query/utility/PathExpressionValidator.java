@@ -46,7 +46,7 @@ public class PathExpressionValidator {
 			return validateFunctionReference();
 		}
 		
-		return false;
+		return true;
 	}
 	
 	private boolean validateComposition(){
