@@ -49,8 +49,8 @@ public class ProjectionImpl implements Projection {
 	}
 	
 	@Override
-	public List<Attribute> getSelectList(){
-		return selectedAttribute;
+	public Iterator<Attribute> getSelectList(){
+		return selectedAttribute.iterator();
 	}
 
 	@Override

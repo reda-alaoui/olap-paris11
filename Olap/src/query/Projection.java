@@ -3,7 +3,7 @@
  */
 package query;
 
-import java.util.List;
+import java.util.Iterator;
 
 import schema.Attribute;
 
@@ -12,5 +12,5 @@ import schema.Attribute;
  *
  */
 public interface Projection extends UnaryOperation {
-	List<Attribute> getSelectList();
+	Iterator<Attribute> getSelectList();
 }
