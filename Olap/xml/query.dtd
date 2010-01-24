@@ -1,0 +1,1 @@
+<!ELEMENT query (classifier, measure, agregate)>

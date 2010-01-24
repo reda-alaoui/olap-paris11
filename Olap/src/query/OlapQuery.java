@@ -12,5 +12,10 @@ import query.QueryFactory.AggregationFunction;
  *  - 1 aggregate function as aggregate {@link AggregationFunction}
  */
 public interface OlapQuery extends PathExpression {
-
+	
+	PathExpression getClassifier();
+	
+	PathExpression getMeasure();
+	
+	AggregationFunction getAggregate();
 }
