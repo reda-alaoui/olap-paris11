@@ -1,7 +1,7 @@
 /**
  * 
  */
-package query.implementation;
+package query.test;
 
 import static org.junit.Assert.*;
 
