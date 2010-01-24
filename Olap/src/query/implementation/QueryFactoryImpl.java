@@ -14,6 +14,7 @@ import query.Projection;
 import query.QueryFactory;
 import schema.Attribute;
 import schema.DataSchema;
+import schema.Function;
 
 /**
  * @author Reda
@@ -40,8 +41,9 @@ public class QueryFactoryImpl implements QueryFactory {
 	 */
 	@Override
 	public FunctionReference function(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		Function f = schema.getFunctionByName(name);
+		FunctionReference funcRef = new FunctionReferenceImpl(f);
+		return funcRef;
 	}
 
 	/* (non-Javadoc)

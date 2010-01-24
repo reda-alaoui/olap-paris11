@@ -3,10 +3,10 @@
  */
 package query.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -15,15 +15,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import query.Composition;
-import query.OlapQuery;
-import query.PathExpression;
-import query.QueryFactory;
-import query.QueryFactory.AggregationFunction;
+import query.FunctionReference;
 import query.implementation.CompositionImpl;
-import query.implementation.OlapQueryImpl;
+import query.implementation.FunctionReferenceImpl;
 import query.implementation.QueryFactoryImpl;
 import schema.Attribute;
-import schema.DataSchema;
 import schema.Function;
 import schema.Attribute.DataType;
 import schema.implementation.AttributeImpl;
@@ -110,7 +106,11 @@ public class QueryFactoryImplTest {
 	 */
 	@Test
 	public void testFunction() {
-		fail("Not yet implemented"); // TODO
+		QueryFactoryImpl q = new QueryFactoryImpl(schema);
+		FunctionReference fr = q.function("f1");
+		
+		FunctionReference fr2 = FunctionReferenceImpl.createFunctionReference(schema.getFunctionByName("f1"));
+		assertEquals(fr, fr2);
 	}
 
 	/**
