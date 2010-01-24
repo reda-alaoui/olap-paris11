@@ -27,12 +27,12 @@ public class FunctionReferenceImpl implements FunctionReference {
 	/**
 	 * Reference to range attribute
 	 */
-	private List<Attribute> range;
+	private List<Attribute> rangeList;
 	
 	/**
 	 * Reference to domain attribute
 	 */
-	private List<Attribute> domain;
+	private List<Attribute> domainList;
 
 	public FunctionReferenceImpl(Function referredFunction) {
 		super();
@@ -43,11 +43,9 @@ public class FunctionReferenceImpl implements FunctionReference {
 		//multiple acces to these members will be more efficient
 		List<Attribute> rangeList = new ArrayList<Attribute>();
 		rangeList.add(referredFunction.getRange());
-		range = rangeList;
 		
 		List<Attribute> domainList = new ArrayList<Attribute>();
 		domainList.add(referredFunction.getDomain());
-		domain = domainList;
 	}
 
 	@Override
@@ -58,12 +56,12 @@ public class FunctionReferenceImpl implements FunctionReference {
 	
 	@Override
 	public Iterator<Attribute> getDomain() {
-		return this.domain.iterator();
+		return this.domainList.iterator();
 	}
 
 	
 	@Override
 	public Iterator<Attribute> getRange() {
-		return this.range.iterator();
+		return this.rangeList.iterator();
 	}
 }
