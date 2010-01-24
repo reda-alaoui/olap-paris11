@@ -1,7 +1,7 @@
 /**
  * 
  */
-package query.test;
+package query.implementation;
 
 import static org.junit.Assert.*;
 
@@ -15,7 +15,7 @@ import org.junit.Test;
  * @author Reda
  *
  */
-public class OlapQueryImplTest {
+public class ProjectionImplTest {
 
 	/**
 	 * @throws java.lang.Exception
@@ -46,7 +46,15 @@ public class OlapQueryImplTest {
 	}
 
 	/**
-	 * Test method for {@link query.implementation.OlapQueryImpl#getDomain()}.
+	 * Test method for {@link query.implementation.ProjectionImpl#ProjectionImpl(java.util.List, query.PathExpression)}.
+	 */
+	@Test
+	public void testProjectionImpl() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link query.implementation.ProjectionImpl#getDomain()}.
 	 */
 	@Test
 	public void testGetDomain() {
@@ -54,10 +62,26 @@ public class OlapQueryImplTest {
 	}
 
 	/**
-	 * Test method for {@link query.implementation.OlapQueryImpl#getRange()}.
+	 * Test method for {@link query.implementation.ProjectionImpl#getRange()}.
 	 */
 	@Test
 	public void testGetRange() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link query.implementation.ProjectionImpl#getSelectList()}.
+	 */
+	@Test
+	public void testGetSelectList() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link query.implementation.ProjectionImpl#getOperand()}.
+	 */
+	@Test
+	public void testGetOperand() {
 		fail("Not yet implemented"); // TODO
 	}
 

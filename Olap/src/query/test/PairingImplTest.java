@@ -15,7 +15,7 @@ import org.junit.Test;
  * @author Reda
  *
  */
-public class OlapQueryImplTest {
+public class PairingImplTest {
 
 	/**
 	 * @throws java.lang.Exception
@@ -46,7 +46,23 @@ public class OlapQueryImplTest {
 	}
 
 	/**
-	 * Test method for {@link query.implementation.OlapQueryImpl#getDomain()}.
+	 * Test method for {@link query.implementation.PairingImpl#getLeftOperand()}.
+	 */
+	@Test
+	public void testGetLeftOperand() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link query.implementation.PairingImpl#getRightOperand()}.
+	 */
+	@Test
+	public void testGetRightOperand() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link query.implementation.PairingImpl#getDomain()}.
 	 */
 	@Test
 	public void testGetDomain() {
@@ -54,7 +70,7 @@ public class OlapQueryImplTest {
 	}
 
 	/**
-	 * Test method for {@link query.implementation.OlapQueryImpl#getRange()}.
+	 * Test method for {@link query.implementation.PairingImpl#getRange()}.
 	 */
 	@Test
 	public void testGetRange() {

@@ -15,7 +15,7 @@ import org.junit.Test;
  * @author Reda
  *
  */
-public class OlapQueryImplTest {
+public class FunctionReferenceImplTest {
 
 	/**
 	 * @throws java.lang.Exception
@@ -46,7 +46,23 @@ public class OlapQueryImplTest {
 	}
 
 	/**
-	 * Test method for {@link query.implementation.OlapQueryImpl#getDomain()}.
+	 * Test method for {@link query.implementation.FunctionReferenceImpl#FunctionReferenceImpl(schema.Function)}.
+	 */
+	@Test
+	public void testFunctionReferenceImpl() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link query.implementation.FunctionReferenceImpl#getRefferedFunction()}.
+	 */
+	@Test
+	public void testGetRefferedFunction() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link query.implementation.FunctionReferenceImpl#getDomain()}.
 	 */
 	@Test
 	public void testGetDomain() {
@@ -54,7 +70,7 @@ public class OlapQueryImplTest {
 	}
 
 	/**
-	 * Test method for {@link query.implementation.OlapQueryImpl#getRange()}.
+	 * Test method for {@link query.implementation.FunctionReferenceImpl#getRange()}.
 	 */
 	@Test
 	public void testGetRange() {
