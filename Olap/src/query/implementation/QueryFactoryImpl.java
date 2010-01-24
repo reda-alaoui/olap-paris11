@@ -32,8 +32,7 @@ public class QueryFactoryImpl implements QueryFactory {
 	 */
 	@Override
 	public Composition composition(PathExpression p1, PathExpression p2) {
-		// TODO Auto-generated method stub
-		return null;
+		return CompositionImpl.createComposition(p1, p2);
 	}
 
 	/* (non-Javadoc)

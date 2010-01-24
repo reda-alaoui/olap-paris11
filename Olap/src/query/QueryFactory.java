@@ -34,7 +34,7 @@ public interface QueryFactory {
 	 * 
 	 * These aggregate function are available aggregate used as by {@link#OLAPQuery}
 	 */
-	static enum AggregationFunction {COUNT, SUM, MIN, MAX, AVG};
+	public static enum AggregationFunction {COUNT, SUM, MIN, MAX, AVG};
 	
 	/**
 	 * Create a {@link FunctionReferenceImpl} by passing its name
