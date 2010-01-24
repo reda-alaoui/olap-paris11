@@ -8,9 +8,13 @@ import java.util.Iterator;
 import schema.Attribute;
 
 /**
- * @author Reda
- *
+ * The projection operator is used to restrict request on specific attributes.
+ * It is composed of an Attribute List and a PathExpression
  */
 public interface Projection extends UnaryOperation {
+	
+	/**
+	 * @return the Attribute List to restrict on.
+	 */
 	Iterator<Attribute> getSelectList();
 }
