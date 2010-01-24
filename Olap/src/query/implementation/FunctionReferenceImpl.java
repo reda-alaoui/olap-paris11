@@ -5,6 +5,7 @@ package query.implementation;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import query.FunctionReference;
 import schema.Attribute;
@@ -24,32 +25,32 @@ public class FunctionReferenceImpl implements FunctionReference {
 	private Function referredFunction;
 	
 	/**
-	 * Reference to range attribute iterator
+	 * Reference to range attribute
 	 */
-	private Iterator<Attribute> rangeIterator;
+	private List<Attribute> range;
 	
 	/**
-	 * Reference to domain attribute iterator
+	 * Reference to domain attribute
 	 */
-	private Iterator<Attribute> domainIterator;
+	private List<Attribute> domain;
 
 	public FunctionReferenceImpl(Function referredFunction) {
 		super();
 		//function is immutable, so we don't need to copy it
 		this.referredFunction = referredFunction;
 		
-		//save iterators now, because referredFunction is immutable
+		//save lists now, because referredFunction is immutable
 		//multiple acces to these members will be more efficient
-		ArrayList<Attribute> rangeList = new ArrayList<Attribute>();
+		List<Attribute> rangeList = new ArrayList<Attribute>();
 		rangeList.add(referredFunction.getRange());
-		rangeIterator = rangeList.iterator();
+		range = rangeList;
 		
-		ArrayList<Attribute> domainList = new ArrayList<Attribute>();
+		List<Attribute> domainList = new ArrayList<Attribute>();
 		domainList.add(referredFunction.getDomain());
-		domainIterator = domainList.iterator();
+		domain = domainList;
 	}
 
-
+	@Override
 	public Function getRefferedFunction() {
 		return this.referredFunction;
 	}
@@ -57,12 +58,12 @@ public class FunctionReferenceImpl implements FunctionReference {
 	
 	@Override
 	public Iterator<Attribute> getDomain() {
-		return rangeIterator;
+		return this.domain.iterator();
 	}
 
 	
 	@Override
 	public Iterator<Attribute> getRange() {
-		return domainIterator;
+		return this.range.iterator();
 	}
 }
