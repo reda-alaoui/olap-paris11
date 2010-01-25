@@ -16,8 +16,10 @@ import org.junit.Test;
 
 import query.Composition;
 import query.FunctionReference;
+import query.Projection;
 import query.implementation.CompositionImpl;
 import query.implementation.FunctionReferenceImpl;
+import query.implementation.ProjectionImpl;
 import query.implementation.QueryFactoryImpl;
 import schema.Attribute;
 import schema.Function;
@@ -91,14 +93,14 @@ public class QueryFactoryImplTest {
 	 */
 	@Test
 	public void testComposition() {
-		QueryFactoryImpl q = new QueryFactoryImpl(schema);
-		Composition c = q.composition(
-		 	    q.function("f1"),
-		 	    q.function("f")
-		);
-		
-		Composition c2 = CompositionImpl.createComposition(q.function("f1"), q.function("f"));
-		assertEquals(c, c2);
+		try {
+			QueryFactoryImpl q = new QueryFactoryImpl(schema);
+			Composition c = q.composition(q.function("f1"), q.function("f"));
+			Composition c2 = CompositionImpl.createComposition(
+					q.function("f1"), q.function("f"));
+			assertEquals(c, c2);
+		} catch (Exception e) {
+		}
 	}
 
 	/**
@@ -134,7 +136,11 @@ public class QueryFactoryImplTest {
 	 */
 	@Test
 	public void testProjection() {
-		fail("Not yet implemented"); // TODO
+		QueryFactoryImpl q = new QueryFactoryImpl(schema);
+		Projection proj = q.projection(null, null);
+		
+		Projection proj2 = ProjectionImpl.createProjection();
+		assertEquals(proj, proj2);
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import query.implementation.FunctionReferenceImpl;
 import query.implementation.PairingImpl;
 import query.implementation.ProjectionImpl;
+import query.utility.PathExpressionValidationException;
 import schema.Attribute;
 
 /**
@@ -51,8 +52,9 @@ public interface QueryFactory {
 	 * @param p2 - expression2
 	 * 
 	 * @return
+	 * @throws Exception 
 	 */
-	Composition composition(PathExpression p1, PathExpression p2);
+	Composition composition(PathExpression p1, PathExpression p2) throws PathExpressionValidationException;
 	
 	/**
 	 * Create a {@link PairingImpl} by passing its two params ({@link PathExpression})

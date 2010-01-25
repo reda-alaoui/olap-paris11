@@ -12,16 +12,21 @@ import query.Pairing;
 import query.PathExpression;
 import query.Projection;
 import query.QueryFactory;
+import query.utility.PathExpressionValidationException;
+import query.utility.PathExpressionValidator;
 import schema.Attribute;
 import schema.DataSchema;
 import schema.Function;
 
 /**
- * @author Reda
- *
+ * Implementation of QueryFactory
+ * @see query.QueryFactory
  */
 public class QueryFactoryImpl implements QueryFactory {
 	
+	/**
+	 * The schema on which apply search validation
+	 */
 	private DataSchema schema;
 	
 	public QueryFactoryImpl(DataSchema schema){
@@ -32,7 +37,13 @@ public class QueryFactoryImpl implements QueryFactory {
 	 * @see query.QueryFactory#composition(query.PathExpression, query.PathExpression)
 	 */
 	@Override
-	public Composition composition(PathExpression p1, PathExpression p2) {
+	public Composition composition(PathExpression p1, PathExpression p2) throws PathExpressionValidationException {
+		if(! new PathExpressionValidator(p1).getValidation()){
+			throw new PathExpressionValidationException(p1);
+		}else if(! new PathExpressionValidator(p2).getValidation()){
+			throw new PathExpressionValidationException(p2);
+		}
+			
 		return CompositionImpl.createComposition(p1, p2);
 	}
 

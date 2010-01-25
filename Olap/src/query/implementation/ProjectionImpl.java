@@ -56,6 +56,11 @@ public class ProjectionImpl implements Projection {
 	@Override
 	public PathExpression getOperand() {
 		return pathExpression;
+	}
+
+	public static Projection createProjection() {
+		// TODO Auto-generated method stub
+		return null;
 	};
 
 }
