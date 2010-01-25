@@ -17,4 +17,6 @@ public interface Projection extends UnaryOperation {
 	 * @return the Attribute List to restrict on.
 	 */
 	Iterator<Attribute> getSelectList();
+	
+	PathExpression getPathExpression();
 }

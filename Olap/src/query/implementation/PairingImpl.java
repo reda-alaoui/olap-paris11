@@ -25,7 +25,7 @@ public class PairingImpl implements Pairing {
 		this.rightOperand = rightOperand;
 	}
 	
-	public static Pairing createComposition(PathExpression p1, PathExpression p2){
+	public static Pairing createPairing(PathExpression p1, PathExpression p2){
 		return new PairingImpl(p1, p2);
 		
 	}

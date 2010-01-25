@@ -31,8 +31,8 @@ public class ProjectionImpl implements Projection {
 	 * @param selectedAttribute
 	 * @param pathExpression
 	 */
-	private ProjectionImpl(List<Attribute> selectedAttribute,
-			PathExpression pathExpression) {
+	private ProjectionImpl(PathExpression pathExpression,
+			List<Attribute> selectedAttribute) {
 		super();
 		this.selectedAttribute = selectedAttribute;
 		this.pathExpression = pathExpression;
@@ -40,7 +40,7 @@ public class ProjectionImpl implements Projection {
 
 	@Override
 	public Iterator<Attribute> getDomain() {
-		return pathExpression.getRange();
+		return pathExpression.getDomain();
 	}
 
 	@Override
@@ -58,9 +58,14 @@ public class ProjectionImpl implements Projection {
 		return pathExpression;
 	}
 
-	public static Projection createProjection(List<Attribute> selectedAttribute,
-			PathExpression pathExpression) {
-		return new ProjectionImpl(selectedAttribute, pathExpression);
+	public static Projection createProjection(PathExpression pathExpression, 
+			List<Attribute> selectedAttribute) {
+		return new ProjectionImpl(pathExpression, selectedAttribute);
+	}
+
+	@Override
+	public PathExpression getPathExpression() {
+		return pathExpression;
 	};
 
 }

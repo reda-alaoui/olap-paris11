@@ -92,6 +92,21 @@ public class PathExpressionValidator {
 	}
 	
 	private boolean validateProjection(){
+		// Verify that selected attributes are all contained in pathexpression's range
+		Projection projection_exp = (Projection) expression;
+		Iterator<Attribute> selectedAttribute = projection_exp.getSelectList();
+		Iterator<Attribute> genuine_range = projection_exp.getPathExpression().getRange();
+		Attribute att;
+		boolean found;
+		
+		while(selectedAttribute.hasNext()){
+			att = selectedAttribute.next();
+			found=false;
+			while(genuine_range.hasNext() && !found){
+				if(att.equals(genuine_range.next())) found = true;
+			}
+			if(!found) return false;
+		}
 		
 		return true;
 	}

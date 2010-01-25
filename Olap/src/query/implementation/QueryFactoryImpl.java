@@ -38,22 +38,25 @@ public class QueryFactoryImpl implements QueryFactory {
 	 */
 	@Override
 	public Composition composition(PathExpression p1, PathExpression p2) throws PathExpressionValidationException {
-		if(! new PathExpressionValidator(p1).getValidation()){
-			throw new PathExpressionValidationException(p1);
-		}else if(! new PathExpressionValidator(p2).getValidation()){
-			throw new PathExpressionValidationException(p2);
-		}
-			
-		return CompositionImpl.createComposition(p1, p2);
+		Composition composition = CompositionImpl.createComposition(p1, p2);
+		
+		if(! new PathExpressionValidator(composition).getValidation()) 
+			throw new PathExpressionValidationException(composition);
+		
+		return composition;
 	}
 
 	/* (non-Javadoc)
 	 * @see query.QueryFactory#function(java.lang.String)
 	 */
 	@Override
-	public FunctionReference function(String name) {
+	public FunctionReference function(String name) throws PathExpressionValidationException {
 		Function f = schema.getFunctionByName(name);
 		FunctionReference funcRef = new FunctionReferenceImpl(f);
+		
+		if(! new PathExpressionValidator(funcRef).getValidation()) 
+			throw new PathExpressionValidationException(funcRef);
+		
 		return funcRef;
 	}
 
@@ -62,27 +65,39 @@ public class QueryFactoryImpl implements QueryFactory {
 	 */
 	@Override
 	public OlapQuery olapQuery(PathExpression c, PathExpression m,
-			AggregationFunction op) {
-		// TODO Auto-generated method stub
-		return null;
+			AggregationFunction op) throws PathExpressionValidationException {
+		OlapQuery query = OlapQueryImpl.createOlapQuery(c, m, op);
+		
+		if(! new PathExpressionValidator(query).getValidation()) 
+			throw new PathExpressionValidationException(query);
+		
+		return query;
 	}
 
 	/* (non-Javadoc)
 	 * @see query.QueryFactory#pairing(query.PathExpression, query.PathExpression)
 	 */
 	@Override
-	public Pairing pairing(PathExpression p1, PathExpression p2) {
-		// TODO Auto-generated method stub
-		return null;
+	public Pairing pairing(PathExpression p1, PathExpression p2) throws PathExpressionValidationException {
+		Pairing pairing = PairingImpl.createPairing(p1, p2);
+		
+		if(! new PathExpressionValidator(pairing).getValidation()) 
+			throw new PathExpressionValidationException(pairing);
+		
+		return pairing;
 	}
 
 	/* (non-Javadoc)
 	 * @see query.QueryFactory#projection(query.PathExpression, java.util.List)
 	 */
 	@Override
-	public Projection projection(PathExpression p, List<Attribute> selectList) {
-		// TODO Auto-generated method stub
-		return null;
+	public Projection projection(PathExpression p, List<Attribute> selectList) throws PathExpressionValidationException {
+		Projection projection = ProjectionImpl.createProjection(p, selectList);
+		
+		if(! new PathExpressionValidator(projection).getValidation()) 
+			throw new PathExpressionValidationException(projection);
+		
+		return projection;
 	}
 
 }

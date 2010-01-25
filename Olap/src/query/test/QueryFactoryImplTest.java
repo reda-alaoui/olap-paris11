@@ -21,6 +21,7 @@ import query.implementation.CompositionImpl;
 import query.implementation.FunctionReferenceImpl;
 import query.implementation.ProjectionImpl;
 import query.implementation.QueryFactoryImpl;
+import query.utility.PathExpressionValidationException;
 import schema.Attribute;
 import schema.Function;
 import schema.Attribute.DataType;
@@ -105,9 +106,10 @@ public class QueryFactoryImplTest {
 
 	/**
 	 * Test method for {@link query.implementation.QueryFactoryImpl#function(java.lang.String)}.
+	 * @throws PathExpressionValidationException 
 	 */
 	@Test
-	public void testFunction() {
+	public void testFunction() throws PathExpressionValidationException {
 		QueryFactoryImpl q = new QueryFactoryImpl(schema);
 		FunctionReference fr = q.function("f1");
 		
@@ -133,9 +135,10 @@ public class QueryFactoryImplTest {
 
 	/**
 	 * Test method for {@link query.implementation.QueryFactoryImpl#projection(query.PathExpression, java.util.List)}.
+	 * @throws PathExpressionValidationException 
 	 */
 	@Test
-	public void testProjection() {
+	public void testProjection() throws PathExpressionValidationException {
 		QueryFactoryImpl q = new QueryFactoryImpl(schema);
 		Projection proj = q.projection(null, null);
 		

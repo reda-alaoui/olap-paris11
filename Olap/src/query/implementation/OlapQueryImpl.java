@@ -20,6 +20,18 @@ public class OlapQueryImpl implements OlapQuery {
 	private PathExpression measure;
 	private AggregationFunction aggregate;
 	
+	private OlapQueryImpl(PathExpression classifier, PathExpression measure,
+			AggregationFunction aggregate){
+		this.classifier = classifier;
+		this.measure = measure;
+		this.aggregate = aggregate;
+	}
+	
+	public static OlapQuery createOlapQuery(PathExpression classifier, PathExpression measure,
+			AggregationFunction aggregate){
+		return new OlapQueryImpl(classifier, measure, aggregate);
+	}
+	
 	@Override
 	public Iterator<Attribute> getDomain() {
 		// TODO Auto-generated method stub
