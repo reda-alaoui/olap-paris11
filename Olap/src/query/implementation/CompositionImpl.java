@@ -11,14 +11,14 @@ import schema.Attribute;
 
 public class CompositionImpl implements Composition {
 	
+	PathExpression leftOperand;
+	
+	PathExpression rightOperand;
+	
 	public static Composition createComposition(PathExpression leftOperand,
 			PathExpression rightOperand){
 		return new CompositionImpl(leftOperand,rightOperand);
 	}
-	
-	PathExpression leftOperand;
-	
-	PathExpression rightOperand;
 
 	private CompositionImpl(PathExpression leftOperand,
 			PathExpression rightOperand) {
@@ -51,7 +51,7 @@ public class CompositionImpl implements Composition {
 
 	@Override
 	public Iterator<Attribute> getDomain() {
-		return leftOperand.getDomain();
+		return rightOperand.getDomain();
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class CompositionImpl implements Composition {
 
 	@Override
 	public Iterator<Attribute> getRange() {
-		return rightOperand.getRange();
+		return leftOperand.getRange();
 	}
 
 	@Override

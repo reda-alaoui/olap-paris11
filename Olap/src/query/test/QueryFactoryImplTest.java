@@ -139,7 +139,7 @@ public class QueryFactoryImplTest {
 		QueryFactoryImpl q = new QueryFactoryImpl(schema);
 		Projection proj = q.projection(null, null);
 		
-		Projection proj2 = ProjectionImpl.createProjection();
+		Projection proj2 = ProjectionImpl.createProjection(null, null);
 		assertEquals(proj, proj2);
 	}
 

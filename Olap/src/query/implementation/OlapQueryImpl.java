@@ -15,7 +15,11 @@ import schema.Attribute;
  *
  */
 public class OlapQueryImpl implements OlapQuery {
-
+	
+	private PathExpression classifier;
+	private PathExpression measure;
+	private AggregationFunction aggregate;
+	
 	@Override
 	public Iterator<Attribute> getDomain() {
 		// TODO Auto-generated method stub
@@ -30,20 +34,17 @@ public class OlapQueryImpl implements OlapQuery {
 
 	@Override
 	public AggregationFunction getAggregate() {
-		// TODO Auto-generated method stub
-		return null;
+		return aggregate;
 	}
 
 	@Override
 	public PathExpression getClassifier() {
-		// TODO Auto-generated method stub
-		return null;
+		return classifier;
 	}
 
 	@Override
 	public PathExpression getMeasure() {
-		// TODO Auto-generated method stub
-		return null;
+		return measure;
 	}
 
 }
