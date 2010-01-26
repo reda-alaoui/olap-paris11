@@ -155,8 +155,8 @@ public class QueryFactoryImplTest {
 		attList.add(new AttributeImpl("Quantity",DataType.INTEGER));
 		attList.add(new AttributeImpl("Product", DataType.STRING));
 		
-		Projection proj = q.projection(attList);
-		Projection proj2 = ProjectionImpl.createProjection(attList);
+		Projection proj = q.projection(attList,null);
+		Projection proj2 = ProjectionImpl.createProjection(attList,null);
 		
 		assertEquals(proj, proj2);
 	}

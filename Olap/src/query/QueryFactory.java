@@ -71,7 +71,7 @@ public interface QueryFactory {
 	 * @param selectList - the list of attributes to restrict on 
 	 * @return
 	 */
-	Projection projection(List<Attribute> selectList) throws PathExpressionValidationException;;
+	Projection projection(List<Attribute> selectList, List<Attribute> domain) throws PathExpressionValidationException;;
 	
 	/**
 	 * Build the OlapQuery by passing its classifier, measure and aggregate operator.

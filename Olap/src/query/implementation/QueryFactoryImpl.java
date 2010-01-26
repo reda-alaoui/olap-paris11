@@ -40,7 +40,7 @@ public class QueryFactoryImpl implements QueryFactory {
 	public Composition composition(PathExpression p1, PathExpression p2) throws PathExpressionValidationException {
 		Composition composition = CompositionImpl.createComposition(p1, p2);
 		
-		if(! new PathExpressionValidator(composition).getValidation()) 
+		if(! new PathExpressionValidator(composition, schema).getValidation()) 
 			throw new PathExpressionValidationException(composition);
 		
 		return composition;
@@ -54,7 +54,7 @@ public class QueryFactoryImpl implements QueryFactory {
 		Function f = schema.getFunctionByName(name);
 		FunctionReference funcRef = new FunctionReferenceImpl(f);
 		
-		if(! new PathExpressionValidator(funcRef).getValidation()) 
+		if(! new PathExpressionValidator(funcRef, schema).getValidation()) 
 			throw new PathExpressionValidationException(funcRef);
 		
 		return funcRef;
@@ -68,7 +68,7 @@ public class QueryFactoryImpl implements QueryFactory {
 			AggregationFunction op) throws PathExpressionValidationException {
 		OlapQuery query = OlapQueryImpl.createOlapQuery(c, m, op);
 		
-		if(! new PathExpressionValidator(query).getValidation()) 
+		if(! new PathExpressionValidator(query, schema).getValidation()) 
 			throw new PathExpressionValidationException(query);
 		
 		return query;
@@ -81,7 +81,7 @@ public class QueryFactoryImpl implements QueryFactory {
 	public Pairing pairing(PathExpression p1, PathExpression p2) throws PathExpressionValidationException {
 		Pairing pairing = PairingImpl.createPairing(p1, p2);
 		
-		if(! new PathExpressionValidator(pairing).getValidation()) 
+		if(! new PathExpressionValidator(pairing, schema).getValidation()) 
 			throw new PathExpressionValidationException(pairing);
 		
 		return pairing;
@@ -91,10 +91,10 @@ public class QueryFactoryImpl implements QueryFactory {
 	 * @see query.QueryFactory#projection(query.PathExpression, java.util.List)
 	 */
 	@Override
-	public Projection projection(List<Attribute> selectList) throws PathExpressionValidationException {
-		Projection projection = ProjectionImpl.createProjection(selectList);
+	public Projection projection(List<Attribute> selectList, List<Attribute> domain) throws PathExpressionValidationException {
+		Projection projection = ProjectionImpl.createProjection(selectList, domain);
 		
-		if(! new PathExpressionValidator(projection).getValidation()) 
+		if(! new PathExpressionValidator(projection, schema).getValidation()) 
 			throw new PathExpressionValidationException(projection);
 		
 		return projection;
