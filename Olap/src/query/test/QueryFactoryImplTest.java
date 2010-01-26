@@ -16,9 +16,11 @@ import org.junit.Test;
 
 import query.Composition;
 import query.FunctionReference;
+import query.Pairing;
 import query.Projection;
 import query.implementation.CompositionImpl;
 import query.implementation.FunctionReferenceImpl;
+import query.implementation.PairingImpl;
 import query.implementation.ProjectionImpl;
 import query.implementation.QueryFactoryImpl;
 import query.utility.PathExpressionValidationException;
@@ -130,7 +132,16 @@ public class QueryFactoryImplTest {
 	 */
 	@Test
 	public void testPairing() {
-		fail("Not yet implemented"); // TODO
+		try {
+			QueryFactoryImpl q = new QueryFactoryImpl(schema);			
+			Pairing p = q.pairing(q.function("q"), q.function("f"));
+			Pairing p2 = PairingImpl.createPairing(
+										q.function("q"),
+										q.function("f")
+									);
+			assertEquals(p, p2);
+		} catch (Exception e) {
+		}
 	}
 
 	/**
@@ -140,9 +151,13 @@ public class QueryFactoryImplTest {
 	@Test
 	public void testProjection() throws PathExpressionValidationException {
 		QueryFactoryImpl q = new QueryFactoryImpl(schema);
-		Projection proj = q.projection(null, null);
+		ArrayList<Attribute> attList = new ArrayList<Attribute>();
+		attList.add(new AttributeImpl("Quantity",DataType.INTEGER));
+		attList.add(new AttributeImpl("Product", DataType.STRING));
 		
-		Projection proj2 = ProjectionImpl.createProjection(null, null);
+		Projection proj = q.projection(attList);
+		Projection proj2 = ProjectionImpl.createProjection(attList);
+		
 		assertEquals(proj, proj2);
 	}
 

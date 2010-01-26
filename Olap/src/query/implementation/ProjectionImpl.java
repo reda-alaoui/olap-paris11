@@ -21,26 +21,20 @@ public class ProjectionImpl implements Projection {
 	 */
 	List<Attribute> selectedAttribute;
 	
-	/**
-	 * The PathExprresion on which apply the projection
-	 */
-	PathExpression pathExpression;
 	
 	/**
 	 * Construct from attribute list and {@link PathExpression}
 	 * @param selectedAttribute
-	 * @param pathExpression
 	 */
-	private ProjectionImpl(PathExpression pathExpression,
-			List<Attribute> selectedAttribute) {
+	private ProjectionImpl(List<Attribute> selectedAttribute) {
 		super();
 		this.selectedAttribute = selectedAttribute;
-		this.pathExpression = pathExpression;
 	}
 
 	@Override
 	public Iterator<Attribute> getDomain() {
-		return pathExpression.getDomain();
+		//TODO replace null
+		return null;
 	}
 
 	@Override
@@ -53,19 +47,8 @@ public class ProjectionImpl implements Projection {
 		return selectedAttribute.iterator();
 	}
 
-	@Override
-	public PathExpression getOperand() {
-		return pathExpression;
+	public static Projection createProjection(List<Attribute> selectedAttribute) {
+		return new ProjectionImpl(selectedAttribute);
 	}
-
-	public static Projection createProjection(PathExpression pathExpression, 
-			List<Attribute> selectedAttribute) {
-		return new ProjectionImpl(pathExpression, selectedAttribute);
-	}
-
-	@Override
-	public PathExpression getPathExpression() {
-		return pathExpression;
-	};
 
 }

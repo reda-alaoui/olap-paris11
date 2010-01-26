@@ -91,8 +91,8 @@ public class QueryFactoryImpl implements QueryFactory {
 	 * @see query.QueryFactory#projection(query.PathExpression, java.util.List)
 	 */
 	@Override
-	public Projection projection(PathExpression p, List<Attribute> selectList) throws PathExpressionValidationException {
-		Projection projection = ProjectionImpl.createProjection(p, selectList);
+	public Projection projection(List<Attribute> selectList) throws PathExpressionValidationException {
+		Projection projection = ProjectionImpl.createProjection(selectList);
 		
 		if(! new PathExpressionValidator(projection).getValidation()) 
 			throw new PathExpressionValidationException(projection);
