@@ -4,10 +4,7 @@
 	<classifier>
 		<composition>
 				<projection selectedattribute="date" domain="quantity,date"/>
-				<pairing>
-					<pathexpression>q</pathexpression>
-					<pathexpression>f</pathexpression>
-				</pairing>
+				<pairing>q,f</pairing>
 		</composition>
 	</classifier>
 	<measure>f</measure>
