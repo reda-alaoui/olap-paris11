@@ -1,6 +1,3 @@
-/**
- * 
- */
 package query.test;
 
 import static org.junit.Assert.*;
@@ -13,63 +10,54 @@ import org.junit.Test;
 
 public class CompositionImplTest {
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
 	public void setUp() throws Exception {
 	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@After
 	public void tearDown() throws Exception {
 	}
 
-	/**
-	 * Test method for {@link query.implementation.CompositionImpl#getLeftOperand()}.
-	 */
 	@Test
-	public void testGetLeftOperand() {
+	public void testHashCode() {
 		fail("Not yet implemented"); // TODO
 	}
 
-	/**
-	 * Test method for {@link query.implementation.CompositionImpl#getRightOperand()}.
-	 */
 	@Test
-	public void testGetRightOperand() {
+	public void testCreateComposition() {
 		fail("Not yet implemented"); // TODO
 	}
 
-	/**
-	 * Test method for {@link query.implementation.CompositionImpl#getDomain()}.
-	 */
+	@Test
+	public void testEqualsObject() {
+		fail("Not yet implemented"); // TODO
+	}
+
 	@Test
 	public void testGetDomain() {
 		fail("Not yet implemented"); // TODO
 	}
 
-	/**
-	 * Test method for {@link query.implementation.CompositionImpl#getRange()}.
-	 */
+	@Test
+	public void testGetLeftOperand() {
+		fail("Not yet implemented"); // TODO
+	}
+
 	@Test
 	public void testGetRange() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	@Test
+	public void testGetRightOperand() {
 		fail("Not yet implemented"); // TODO
 	}
 

@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class ProjectionImplTest {
+public class OlapQueryValidatorTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -27,17 +27,12 @@ public class ProjectionImplTest {
 	}
 
 	@Test
-	public void testGetDomain() {
+	public void testOlapQueryValidator() {
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testGetRange() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public void testCreateProjection() {
+	public void testGetValidation() {
 		fail("Not yet implemented"); // TODO
 	}
 
