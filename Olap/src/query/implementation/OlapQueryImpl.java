@@ -14,8 +14,13 @@ import query.QueryFactory.AggregationFunction;
  */
 public class OlapQueryImpl implements OlapQuery {
 	
+	public static OlapQuery createOlapQuery(PathExpression classifier, PathExpression measure,
+			AggregationFunction aggregate){
+		return new OlapQueryImpl(classifier, measure, aggregate);
+	}
 	private PathExpression classifier;
 	private PathExpression measure;
+	
 	private AggregationFunction aggregate;
 	
 	private OlapQueryImpl(PathExpression classifier, PathExpression measure,
@@ -24,10 +29,32 @@ public class OlapQueryImpl implements OlapQuery {
 		this.measure = measure;
 		this.aggregate = aggregate;
 	}
-	
-	public static OlapQuery createOlapQuery(PathExpression classifier, PathExpression measure,
-			AggregationFunction aggregate){
-		return new OlapQueryImpl(classifier, measure, aggregate);
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OlapQueryImpl other = (OlapQueryImpl) obj;
+		if (aggregate == null) {
+			if (other.aggregate != null)
+				return false;
+		} else if (!aggregate.equals(other.aggregate))
+			return false;
+		if (classifier == null) {
+			if (other.classifier != null)
+				return false;
+		} else if (!classifier.equals(other.classifier))
+			return false;
+		if (measure == null) {
+			if (other.measure != null)
+				return false;
+		} else if (!measure.equals(other.measure))
+			return false;
+		return true;
 	}
 
 	@Override
@@ -43,6 +70,18 @@ public class OlapQueryImpl implements OlapQuery {
 	@Override
 	public PathExpression getMeasure() {
 		return measure;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((aggregate == null) ? 0 : aggregate.hashCode());
+		result = prime * result
+				+ ((classifier == null) ? 0 : classifier.hashCode());
+		result = prime * result + ((measure == null) ? 0 : measure.hashCode());
+		return result;
 	}
 
 }

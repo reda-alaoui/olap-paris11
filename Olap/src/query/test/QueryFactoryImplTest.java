@@ -16,10 +16,13 @@ import org.junit.Test;
 
 import query.Composition;
 import query.FunctionReference;
+import query.OlapQuery;
 import query.Pairing;
 import query.Projection;
+import query.QueryFactory.AggregationFunction;
 import query.implementation.CompositionImpl;
 import query.implementation.FunctionReferenceImpl;
+import query.implementation.OlapQueryImpl;
 import query.implementation.PairingImpl;
 import query.implementation.ProjectionImpl;
 import query.implementation.QueryFactoryImpl;
@@ -103,6 +106,7 @@ public class QueryFactoryImplTest {
 					q.function("f1"), q.function("f"));
 			assertEquals(c, c2);
 		} catch (Exception e) {
+			fail();
 		}
 	}
 
@@ -111,12 +115,16 @@ public class QueryFactoryImplTest {
 	 * @throws PathExpressionValidationException 
 	 */
 	@Test
-	public void testFunction() throws PathExpressionValidationException {
-		QueryFactoryImpl q = new QueryFactoryImpl(schema);
-		FunctionReference fr = q.function("f1");
-		
-		FunctionReference fr2 = FunctionReferenceImpl.createFunctionReference(schema.getFunctionByName("f1"));
-		assertEquals(fr, fr2);
+	public void testFunction() {
+		try {
+			QueryFactoryImpl q = new QueryFactoryImpl(schema);
+			FunctionReference fr = q.function("f1");
+			
+			FunctionReference fr2 = FunctionReferenceImpl.createFunctionReference(schema.getFunctionByName("f1"));
+			assertEquals(fr, fr2);
+		} catch (PathExpressionValidationException e) {
+			fail();
+		}
 	}
 
 	/**
@@ -124,7 +132,47 @@ public class QueryFactoryImplTest {
 	 */
 	@Test
 	public void testOlapQuery() {
-		fail("Not yet implemented"); // TODO
+		try {
+			QueryFactoryImpl q = new QueryFactoryImpl(schema);
+			
+			ArrayList<Attribute> attList = new ArrayList<Attribute>();
+			attList.add(new AttributeImpl("Quantity",DataType.INTEGER));
+			attList.add(new AttributeImpl("Product", DataType.STRING));
+			//selected attributes
+			ArrayList<Attribute> attList2 = new ArrayList<Attribute>();
+			attList2.add(new AttributeImpl("Product", DataType.STRING));
+			
+			OlapQuery olapQuery =q.olapQuery(
+				q.composition(	
+					q.projection(attList2, attList),
+					q.pairing(
+							q.function("q"),
+							q.function("f")
+					)
+				),
+				q.function("q"),
+				AggregationFunction.COUNT
+				);
+			
+			ArrayList<Attribute> attList3 = new ArrayList<Attribute>();
+			attList3.add(new AttributeImpl("Quantity",DataType.INTEGER));
+			attList3.add(new AttributeImpl("Product", DataType.STRING));
+			//selected attributes
+			ArrayList<Attribute> attList4 = new ArrayList<Attribute>();
+			attList4.add(new AttributeImpl("Product", DataType.STRING));
+			
+			OlapQuery olapQuery2 = OlapQueryImpl.createOlapQuery(q.composition(	
+					q.projection(attList2, attList),
+					q.pairing(
+							q.function("q"),
+							q.function("f")
+					)), q.function("q"), AggregationFunction.COUNT);
+			
+			assertEquals(olapQuery, olapQuery2);
+			
+		} catch (Exception e) {
+			fail();
+		}
 	}
 
 	/**
@@ -141,6 +189,7 @@ public class QueryFactoryImplTest {
 									);
 			assertEquals(p, p2);
 		} catch (Exception e) {
+			fail();
 		}
 	}
 
@@ -149,16 +198,25 @@ public class QueryFactoryImplTest {
 	 * @throws PathExpressionValidationException 
 	 */
 	@Test
-	public void testProjection() throws PathExpressionValidationException {
-		QueryFactoryImpl q = new QueryFactoryImpl(schema);
-		ArrayList<Attribute> attList = new ArrayList<Attribute>();
-		attList.add(new AttributeImpl("Quantity",DataType.INTEGER));
-		attList.add(new AttributeImpl("Product", DataType.STRING));
+	public void testProjection(){
+		try {
+			QueryFactoryImpl q = new QueryFactoryImpl(schema);
+			//domain
+			ArrayList<Attribute> attList = new ArrayList<Attribute>();
+			attList.add(new AttributeImpl("Quantity",DataType.INTEGER));
+			attList.add(new AttributeImpl("Product", DataType.STRING));
+			//selected attributes
+			ArrayList<Attribute> attList2 = new ArrayList<Attribute>();
+			attList2.add(new AttributeImpl("Product", DataType.STRING));
+			
+			Projection proj = q.projection(attList2,attList);
+			Projection proj2 = ProjectionImpl.createProjection(attList2,attList);
+			
+			assertEquals(proj, proj2);
+		} catch (Exception e) {
+			fail();
+		}
 		
-		Projection proj = q.projection(attList,null);
-		Projection proj2 = ProjectionImpl.createProjection(attList,null);
-		
-		assertEquals(proj, proj2);
 	}
 
 }
