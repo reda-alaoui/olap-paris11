@@ -70,7 +70,7 @@ public class PathExpressionValidator {
 	 * @return True if the tested composition is valid, False if not
 	 */
 	private boolean validateComposition(){
-		// Verify that left operand's domain equals right operand's range 
+		// Verifies that left operand's domain equals right operand's range 
 		Composition composition_exp = (Composition) expression;
 		
 		Iterator<Attribute> left_iterator = composition_exp.getLeftOperand().getDomain();
@@ -95,7 +95,7 @@ public class PathExpressionValidator {
 	 * @return True if the tested pairing is valid, False if not
 	 */
 	private boolean validatePairing(){
-		// Verify that left operand's domain equals right operand's domain
+		// Verifies that left operand's domain equals right operand's domain
 		Pairing pairing_exp = (Pairing) expression;
 		
 		Iterator<Attribute> left_iterator = pairing_exp.getLeftOperand().getDomain();
@@ -120,7 +120,7 @@ public class PathExpressionValidator {
 	 * @return True if the tested projection is valid, False if not
 	 */
 	private boolean validateProjection(){
-		// Verify that domain contains range
+		// Verifies that domain contains range
 		Projection projection_exp = (Projection) expression;
 		Iterator<Attribute> selectedAttribute = projection_exp.getRange();
 		Iterator<Attribute> genuine_range = projection_exp.getDomain();
@@ -144,7 +144,7 @@ public class PathExpressionValidator {
 	 * @return True if tested query is valid, False if not
 	 */
 	private boolean validateOlapQuery(){
-		// Verify that aggregate is compatible with range(measure) DataType
+		// Verifies that aggregate is compatible with range(measure) DataType
 		OlapQuery query_exp = (OlapQuery) expression;
 		AggregationFunction aggregate = query_exp.getAggregate();
 		
@@ -157,7 +157,7 @@ public class PathExpressionValidator {
 			}
 		}
 		
-		// Verify that source(classifier) = source(measure) = root
+		// Verifies that source(classifier) = source(measure) = root
 		
 		Iterator<Attribute> att_iterator = schema.getAttributeIterator();
 		Attribute root=null;
@@ -188,7 +188,9 @@ public class PathExpressionValidator {
 	 * @return True if the tested function reference is valid, False if not
 	 */
 	private boolean validateFunctionReference(){
-		
+		FunctionReference func_exp = (FunctionReference) expression;
+		// Test that referred function is not a null object
+		if(func_exp.getRefferedFunction() == null) return false;
 		return true;
 	}
 }
