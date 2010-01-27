@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query classifier="h" measure="p" aggregate="COUNT">
+	<function name="f">
+		<domain>
+			<attribute name="O" />
+		</domain>
+		<range>
+			<atribute name="store" />
+		</range>
+	</function>
+	
+	<function name="f1">
+		<domain>
+			<attribute name="store" />
+		</domain>
+		<range>
+			<atribute name="city" />
+		</range>
+	</function>
+	
+	<function name="g">
+		<domain>
+			<attribute name="O" />
+		</domain>
+		<range>
+			<atribute name="date" />
+		</range>
+	</function>
+	
+	<pairing name="h" leftoperand="f" rightoperand="g"/>
+	
+	<composition name="i" leftoperand="f1" rightoperand="f"/>
+	
+	<projection name="p">
+		<domain>
+			<attribute name="O" />
+		</domain>
+		<range>
+			<atribute name="store" />
+		</range>
+	</projection>
+	
+</query>
