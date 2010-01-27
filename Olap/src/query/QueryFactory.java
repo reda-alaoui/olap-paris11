@@ -5,6 +5,7 @@ import java.util.List;
 import query.implementation.FunctionReferenceImpl;
 import query.implementation.PairingImpl;
 import query.implementation.ProjectionImpl;
+import query.utility.OlapQueryValidationException;
 import query.utility.PathExpressionValidationException;
 import schema.Attribute;
 
@@ -85,6 +86,6 @@ public interface QueryFactory {
 	 */
 	OlapQuery olapQuery(	PathExpression c,
 	                      	PathExpression m,
-	                      	AggregationFunction op) throws PathExpressionValidationException;
+	                      	AggregationFunction op) throws OlapQueryValidationException;
 
 }

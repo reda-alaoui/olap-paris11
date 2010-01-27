@@ -12,7 +12,7 @@ import schema.Function;
  */
 public interface FunctionReference extends PathExpression{
 	/**
-	 * @return the reffered function
+	 * @return the referred function
 	 */
 	Function getRefferedFunction();
 	

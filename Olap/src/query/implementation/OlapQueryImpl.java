@@ -3,12 +3,9 @@
  */
 package query.implementation;
 
-import java.util.Iterator;
-
 import query.OlapQuery;
 import query.PathExpression;
 import query.QueryFactory.AggregationFunction;
-import schema.Attribute;
 
 /**
  * Implements {@link OlapQuery}
@@ -31,18 +28,6 @@ public class OlapQueryImpl implements OlapQuery {
 	public static OlapQuery createOlapQuery(PathExpression classifier, PathExpression measure,
 			AggregationFunction aggregate){
 		return new OlapQueryImpl(classifier, measure, aggregate);
-	}
-	
-	@Override
-	public Iterator<Attribute> getDomain() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Iterator<Attribute> getRange() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

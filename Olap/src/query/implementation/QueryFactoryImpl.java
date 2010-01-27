@@ -12,6 +12,8 @@ import query.Pairing;
 import query.PathExpression;
 import query.Projection;
 import query.QueryFactory;
+import query.utility.OlapQueryValidationException;
+import query.utility.OlapQueryValidator;
 import query.utility.PathExpressionValidationException;
 import query.utility.PathExpressionValidator;
 import schema.Attribute;
@@ -41,7 +43,7 @@ public class QueryFactoryImpl implements QueryFactory {
 	public Composition composition(PathExpression p1, PathExpression p2) throws PathExpressionValidationException {
 		Composition composition = CompositionImpl.createComposition(p1, p2);
 		
-		if(! new PathExpressionValidator(composition, schema).getValidation()) 
+		if(! new PathExpressionValidator(composition).getValidation()) 
 			throw new PathExpressionValidationException(composition);
 		
 		return composition;
@@ -55,7 +57,7 @@ public class QueryFactoryImpl implements QueryFactory {
 		Function f = schema.getFunctionByName(name);
 		FunctionReference funcRef = new FunctionReferenceImpl(f);
 		
-		if(! new PathExpressionValidator(funcRef, schema).getValidation()) 
+		if(! new PathExpressionValidator(funcRef).getValidation()) 
 			throw new PathExpressionValidationException(funcRef);
 		
 		return funcRef;
@@ -66,11 +68,11 @@ public class QueryFactoryImpl implements QueryFactory {
 	 */
 	@Override
 	public OlapQuery olapQuery(PathExpression c, PathExpression m,
-			AggregationFunction op) throws PathExpressionValidationException {
+			AggregationFunction op) throws OlapQueryValidationException {
 		OlapQuery query = OlapQueryImpl.createOlapQuery(c, m, op);
 		
-		if(! new PathExpressionValidator(query, schema).getValidation()) 
-			throw new PathExpressionValidationException(query);
+		if(! new OlapQueryValidator(query, schema).getValidation()) 
+			throw new OlapQueryValidationException(query);
 		
 		return query;
 	}
@@ -82,7 +84,7 @@ public class QueryFactoryImpl implements QueryFactory {
 	public Pairing pairing(PathExpression p1, PathExpression p2) throws PathExpressionValidationException {
 		Pairing pairing = PairingImpl.createPairing(p1, p2);
 		
-		if(! new PathExpressionValidator(pairing, schema).getValidation()) 
+		if(! new PathExpressionValidator(pairing).getValidation()) 
 			throw new PathExpressionValidationException(pairing);
 		
 		return pairing;
@@ -95,7 +97,7 @@ public class QueryFactoryImpl implements QueryFactory {
 	public Projection projection(List<Attribute> selectList, List<Attribute> domain) throws PathExpressionValidationException {
 		Projection projection = ProjectionImpl.createProjection(selectList, domain);
 		
-		if(! new PathExpressionValidator(projection, schema).getValidation()) 
+		if(! new PathExpressionValidator(projection).getValidation()) 
 			throw new PathExpressionValidationException(projection);
 		
 		return projection;
