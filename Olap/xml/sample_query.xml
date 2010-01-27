@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema SYSTEM "query.dtd" >
+<query>
+	<classifier>
+		<composition>
+				<projection selectedattribute="date" domain="quantity,date"/>
+				<pairing>
+					<pathexpression>q</pathexpression>
+					<pathexpression>f</pathexpression>
+				</pairing>
+		</composition>
+	</classifier>
+	<measure>f</measure>
+	<agregate>COUNT</agregate>
+</query>

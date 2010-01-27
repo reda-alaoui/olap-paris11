@@ -1,1 +1,15 @@
 <!ELEMENT query (classifier, measure, agregate)>
+
+
+<!ELEMENT classifier (#PCDATA|(compositio|pairing|projection))>
+<!ELEMENT measure (#PCDATA|(composition|pairing|projection))>
+<!ELEMENT agregate (#PCDATA)>
+
+<!ELEMENT composition ((composition|pairing|projection),(composition|pairing|projection))>
+
+<!ELEMENT pairing ((composition|pairing|projection),(composition|pairing|projection))>
+
+<!ELEMENT projection EMPTY)>
+<!ATTLIST projection
+		  selectedattribute CDATA #REQUIRED
+		  domain CDATA #REQUIRED>
