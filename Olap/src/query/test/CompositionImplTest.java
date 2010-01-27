@@ -23,15 +23,15 @@ import schema.implementation.FunctionImpl;
  */
 public class CompositionImplTest {
 	
-	PathExpression leftOperand;
+	private PathExpression leftOperand;
 	
-	PathExpression rightOperand;
+	private PathExpression rightOperand;
 	
-	Composition composition1;
+	private Composition composition1;
 	
-	Composition composition2;
+	private Composition composition2;
 	
-	Composition composition3;
+	private Composition composition3;
 
 	@Before
 	public void setUp() throws Exception {
