@@ -12,8 +12,8 @@ import schema.DataSchema;
 import schema.Function;
 
 /**
+ * Implements {@link DataSchema}
  * @author Reda
- *
  */
 public class DataSchemaImpl implements DataSchema{
 

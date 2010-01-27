@@ -12,9 +12,8 @@ import schema.implementation.AttributeImpl;
 
 
 /**
+ * Test case of {@link AttributeImpl}
  * @author Reda
- *
- *
  */
 public class AttributeImplTest {
 	/**

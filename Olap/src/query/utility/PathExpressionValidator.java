@@ -14,24 +14,37 @@ import schema.DataSchema;
 import schema.Attribute.DataType;
 
 /**
+ * Validates a {@link PathExpression}
  * @author Reda
- *
  */
 public class PathExpressionValidator {
+	
 	private final PathExpression expression;
 	private final DataSchema schema;
 	private final boolean validation;
 	
+	/**
+	 * @param The expression to validate
+	 * @param Schema containing the expression to validate
+	 * @see PathExpression
+	 * @see DataSchema
+	 */
 	public PathExpressionValidator(PathExpression expression, DataSchema schema){
 		this.expression = expression;
 		this.schema = schema;
 		this.validation = validate();
 	}
 	
+	/**
+	 * @return True if tested expression is valid, False if not.
+	 */
 	public boolean getValidation(){
 		return validation;
 	}
 	
+	/**
+	 * @return True if tested expression is valid, False if not
+	 */
 	private boolean validate(){
 		if(expression instanceof Composition ){
 			return validateComposition();
@@ -52,6 +65,10 @@ public class PathExpressionValidator {
 		return true;
 	}
 	
+	/**
+	 * Validates a {@link Composition}
+	 * @return True if the tested composition is valid, False if not
+	 */
 	private boolean validateComposition(){
 		// Verify that left operand's domain equals right operand's range 
 		Composition composition_exp = (Composition) expression;
@@ -73,6 +90,10 @@ public class PathExpressionValidator {
 		return false;
 	}
 	
+	/**
+	 * Validates a {@link Pairing}
+	 * @return True if the tested pairing is valid, False if not
+	 */
 	private boolean validatePairing(){
 		// Verify that left operand's domain equals right operand's domain
 		Pairing pairing_exp = (Pairing) expression;
@@ -94,6 +115,10 @@ public class PathExpressionValidator {
 		return false;
 	}
 	
+	/**
+	 * Validates a {@link Projection}
+	 * @return True if the tested projection is valid, False if not
+	 */
 	private boolean validateProjection(){
 		// Verify that domain contains range
 		Projection projection_exp = (Projection) expression;
@@ -114,6 +139,10 @@ public class PathExpressionValidator {
 		return true;
 	}
 	
+	/**
+	 * Validates an {@link OlapQuery}
+	 * @return True if tested query is valid, False if not
+	 */
 	private boolean validateOlapQuery(){
 		// Verify that aggregate is compatible with range(measure) DataType
 		OlapQuery query_exp = (OlapQuery) expression;
@@ -154,6 +183,10 @@ public class PathExpressionValidator {
 		
 	}
 	
+	/**
+	 * Validates a {@link FunctionReference}
+	 * @return True if the tested function reference is valid, False if not
+	 */
 	private boolean validateFunctionReference(){
 		
 		return true;

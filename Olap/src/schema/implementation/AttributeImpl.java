@@ -6,9 +6,8 @@ package schema.implementation;
 import schema.Attribute;
 
 /**
- * @author Reda
- * Implements Attribute interface
- *
+ * Implements {@link Attribute}
+ * @author Reda 
  */
 public class AttributeImpl implements Attribute {
 	private final String name;

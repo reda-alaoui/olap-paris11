@@ -8,6 +8,11 @@ import query.Composition;
 import query.PathExpression;
 import schema.Attribute;
 
+/**
+ * Implements {@link Composition}
+ * @author Julien.C
+ * @author Reda
+ */
 
 public class CompositionImpl implements Composition {
 	

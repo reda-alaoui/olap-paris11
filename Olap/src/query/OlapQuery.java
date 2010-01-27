@@ -6,16 +6,27 @@ package query;
 import query.QueryFactory.AggregationFunction;
 
 /**
- *	An OLAP query is composed of :
- *  - 1 path as classifier
- *  - 1 path as measure
- *  - 1 aggregate function as aggregate {@link AggregationFunction}
+ * Let S be a schema. An OLAP Query over S is a (ordered) triple Q = (u, v, op), satisfying the following 
+ * conditions: </br></br>
+ * &nbsp;&nbsp;&nbsp; • u and v are path expressions such that source(u) = source(v) = O </br>
+ * &nbsp;&nbsp;&nbsp; • op is an operation over the target of v </br></br>
+ * The expression u will be referred to as the classiﬁer of Q and the expression v as the measure of Q. 
+ * @author Reda
  */
 public interface OlapQuery extends PathExpression {
 	
+	/**
+	 * @return the query's classifier
+	 */
 	PathExpression getClassifier();
 	
+	/**
+	 * @return the query's measure
+	 */
 	PathExpression getMeasure();
 	
+	/**
+	 * @return the aggregate's operation
+	 */
 	AggregationFunction getAggregate();
 }

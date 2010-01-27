@@ -12,10 +12,9 @@ import query.PathExpression;
 import schema.Attribute;
 
 /**
- * The OLAP pairing operation.
- * Left and right operand have to have the same domain in
- * order to build a valid PathExpression.
- * The range of this operation is the couple leftOperand.range ^ rightOperand.range
+ * Implements {@link Pairing}
+ * @author Julien.C
+ * @author Reda
  */
 public class PairingImpl implements Pairing {
 	

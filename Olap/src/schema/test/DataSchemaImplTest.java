@@ -19,8 +19,8 @@ import schema.implementation.FunctionImpl;
 
 
 /**
+ * Test case of {@link DataSchemaImpl}
  * @author Reda
- *
  */
 public class DataSchemaImplTest {
 

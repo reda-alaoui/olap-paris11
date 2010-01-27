@@ -11,8 +11,9 @@ import query.QueryFactory.AggregationFunction;
 import schema.Attribute;
 
 /**
+ * Implements {@link OlapQuery}
+ * @author Julien.C
  * @author Reda
- *
  */
 public class OlapQueryImpl implements OlapQuery {
 	

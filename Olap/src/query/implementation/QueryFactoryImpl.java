@@ -19,8 +19,9 @@ import schema.DataSchema;
 import schema.Function;
 
 /**
- * Implementation of QueryFactory
- * @see query.QueryFactory
+ * Implements {@link QueryFactory}
+ * @author Julien.C
+ * @author Reda
  */
 public class QueryFactoryImpl implements QueryFactory {
 	

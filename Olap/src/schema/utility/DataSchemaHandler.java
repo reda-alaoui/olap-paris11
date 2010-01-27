@@ -11,14 +11,15 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import schema.Attribute;
+import schema.DataSchema;
 import schema.Function;
 import schema.Attribute.DataType;
 import schema.implementation.AttributeImpl;
 import schema.implementation.FunctionImpl;
 
 /**
+ * Handles an xml file validating the {@link DataSchema} DTD
  * @author Reda
- *
  */
 public class DataSchemaHandler extends DefaultHandler{
 	

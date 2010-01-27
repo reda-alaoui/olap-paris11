@@ -28,6 +28,7 @@ import schema.Attribute;
  *	   q.function("q"),
  *	   q.SUM);
  * </pre></blockquote>
+ * @author Julien.C
  */
 public interface QueryFactory {
 

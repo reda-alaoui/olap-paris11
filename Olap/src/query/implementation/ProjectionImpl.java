@@ -11,8 +11,9 @@ import query.Projection;
 import schema.Attribute;
 
 /**
- * The projection operator is used to restrict request on specific attributes.
- * It is composed of an Attribute List and a PathExpression
+ * Implements {@link Projection}
+ * @author Julien.C
+ * @author Reda
  */
 public class ProjectionImpl implements Projection {
 

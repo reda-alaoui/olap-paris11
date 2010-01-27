@@ -10,6 +10,7 @@ import schema.Attribute;
 /**
  * The path expression represent an Olap path.
  * It is a tree, its leaf are FunctionReference and its root is a FunctionReference or an Operator
+ * @author Julien.C
  */
 public interface PathExpression {	
 	

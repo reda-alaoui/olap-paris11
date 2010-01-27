@@ -12,9 +12,9 @@ import schema.Attribute;
 import schema.Function;
 
 /**
- * FunctionReference is a PathExpression that only referred to a SchemaFunction
- * For example the simple path "g" is a FunctionReference. Object of this class
- * are immutable
+ * Implements {@link FunctionReference}
+ * @author Julien.C
+ * @author Reda
  */
 public class FunctionReferenceImpl implements FunctionReference {
 

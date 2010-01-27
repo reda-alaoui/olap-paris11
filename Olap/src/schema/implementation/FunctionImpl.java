@@ -7,9 +7,8 @@ import schema.Attribute;
 import schema.Function;
 
 /**
+ * Implements {@link Function}
  * @author Reda
- *
- *
  */
 public class FunctionImpl implements Function {
 	private final String name;

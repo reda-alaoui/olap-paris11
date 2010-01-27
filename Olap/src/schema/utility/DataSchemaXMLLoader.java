@@ -15,8 +15,8 @@ import schema.DataSchema;
 import schema.implementation.DataSchemaImpl;
 
 /**
+ * Implements a XML file as a {@link DataSchema}
  * @author Reda
- *
  */
 public class DataSchemaXMLLoader {
 	

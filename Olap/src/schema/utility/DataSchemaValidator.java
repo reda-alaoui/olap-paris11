@@ -15,8 +15,8 @@ import schema.Function;
 import schema.implementation.DataSchemaImpl;
 
 /**
+ * Validates a {@link DataSchema}
  * @author Reda
- *
  */
 public class DataSchemaValidator {
 	private final DataSchema schema;
@@ -38,6 +38,7 @@ public class DataSchemaValidator {
 	}
 	
 	/**
+	 * Validates the {@link DataSchema} schema
 	 * @return True if schema is valid, False if not
 	 */
 	private Boolean validate(){

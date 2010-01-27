@@ -6,20 +6,19 @@ package query;
 
 /**
  * BinaryOperation is an operator from part of an PathExpression
- * that gather 2 others PathExpression.
- * The BinaryOperation is directed, so its composed of a left and a right operand
+ * that gather 2 others PathExpression. </br>
+ * The BinaryOperation is directed, so its composed of a left and a right operand.
+ * @author Julien.C
  */
 public interface BinaryOperation extends PathExpression{
 
 	/**
-	 * The left operand
-	 * @return
+	 * @return The left operand
 	 */
 	PathExpression getLeftOperand();
 	
 	/**
-	 * The right operand
-	 * @return
+	 * @return The right operand
 	 */
 	PathExpression getRightOperand();
 	

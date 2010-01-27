@@ -23,8 +23,8 @@ import schema.utility.DataSchemaXMLLoader;
 
 
 /**
+ * Test case of {@link DataSchemaValidator}
  * @author Reda
- *
  */
 public class DataSchemaValidatorTest {
 	/**
