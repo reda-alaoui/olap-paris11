@@ -8,6 +8,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import query.utility.OlapQueryXMLLoader;
+/**
+ * Test {@link OlapQueryXMLLoader}
+ *
+ */
 public class OlapQueryXMLLoaderTest {
 
 	@BeforeClass

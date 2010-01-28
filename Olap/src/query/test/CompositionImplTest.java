@@ -18,8 +18,8 @@ import schema.Attribute.DataType;
 import schema.implementation.AttributeImpl;
 import schema.implementation.FunctionImpl;
 /**
+ * Test {@link CompositionImpl}
  * @author Reda
- *
  */
 public class CompositionImplTest {
 	

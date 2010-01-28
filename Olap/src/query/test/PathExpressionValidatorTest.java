@@ -9,40 +9,68 @@ import org.junit.Before;
 import org.junit.Test;
 
 import query.Composition;
-import query.PathExpression;
+import query.FunctionReference;
+import query.Pairing;
 import query.Projection;
 import query.implementation.CompositionImpl;
 import query.implementation.FunctionReferenceImpl;
+import query.implementation.PairingImpl;
 import query.implementation.ProjectionImpl;
 import query.utility.PathExpressionValidator;
 import schema.Attribute;
 import schema.Attribute.DataType;
 import schema.implementation.AttributeImpl;
 import schema.implementation.FunctionImpl;
-
+/**
+ * Test {@link PathExpressionValidator}
+ * @author Reda
+ *
+ */
 public class PathExpressionValidatorTest {
-	
+	/**
+	 * A function reference (can't be invalid)
+	 */
+	private FunctionReference function1;
+	/**
+	 * A valid composition
+	 */
 	private Composition composition1;
+	/**
+	 * An invalid composition
+	 */
 	private Composition composition2;
-	
+	/**
+	 * A valid projection
+	 */
 	private Projection projection1;
+	/**
+	 * An invalid projection
+	 */
 	private Projection projection2;
+	/**
+	 * A valid pairing
+	 */
+	private Pairing pairing1;
+	/**
+	 * An invalid pairing
+	 */
+	private Pairing pairing2;
 
 	@Before
 	public void setUp() throws Exception {
-		// Composition instantiations
+		// FunctionReference instantiations
 		Attribute left_domain = new AttributeImpl("date", DataType.STRING);
 		Attribute left_range = new AttributeImpl("month", DataType.STRING);
 		Attribute right_domain = new AttributeImpl("O", DataType.ID);
 		
-		PathExpression leftOperand = new FunctionReferenceImpl(
+		function1 = new FunctionReferenceImpl(
 				new FunctionImpl("f1", left_domain, left_range));
-		PathExpression rightOperand = new FunctionReferenceImpl(
+		// Composition instantiations
+		FunctionReference rightOperand = new FunctionReferenceImpl(
 				new FunctionImpl("f", right_domain, left_domain));
+		composition1 = CompositionImpl.createComposition(function1, rightOperand);
 		
-		composition1 = CompositionImpl.createComposition(leftOperand, rightOperand);
-		
-		composition2 = CompositionImpl.createComposition(rightOperand, leftOperand);
+		composition2 = CompositionImpl.createComposition(rightOperand, function1);
 		
 		// Projection instantiations
 		List<Attribute> range = new ArrayList<Attribute>();
@@ -55,6 +83,14 @@ public class PathExpressionValidatorTest {
 		projection1 = ProjectionImpl.createProjection(range, domain);
 		projection2 = ProjectionImpl.createProjection(domain, range);
 		
+		// Pairing instantiations
+		Attribute att = new AttributeImpl("quantity", DataType.INTEGER);
+		FunctionReference q = new FunctionReferenceImpl(
+				new FunctionImpl("q", right_domain, att));
+		
+		pairing1 = PairingImpl.createPairing(composition1, q);
+		pairing2 = PairingImpl.createPairing(pairing1, function1);
+		
 	}
 
 	@Test
@@ -64,19 +100,26 @@ public class PathExpressionValidatorTest {
 
 	@Test
 	public void testGetValidation() {
-		// Validation of valid composition
-		PathExpressionValidator validator = new PathExpressionValidator(composition1);
-		assertTrue(validator.getValidation());
+		// Validation of a function reference
+		assertTrue(new PathExpressionValidator(function1).getValidation());
+		
+		// Validation of a valid composition
+		assertTrue(new PathExpressionValidator(composition1).getValidation());
 		
 		// Validation of an invalid composition
-		validator = new PathExpressionValidator(composition2);
-		assertFalse(validator.getValidation());
+		assertFalse(new PathExpressionValidator(composition2).getValidation());
 		
 		// Validation of a valid projection
 		assertTrue(new PathExpressionValidator(projection1).getValidation());
 		
-		//Validation of an invalid projection
+		// Validation of an invalid projection
 		assertFalse(new PathExpressionValidator(projection2).getValidation());
+		
+		// Validation of a valid pairing
+		assertTrue(new PathExpressionValidator(pairing1).getValidation());
+		
+		// Validation of an invalid pairing
+		assertFalse(new PathExpressionValidator(pairing2).getValidation());
 	}
 
 }

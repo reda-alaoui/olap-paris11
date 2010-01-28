@@ -51,9 +51,6 @@ public class PathExpressionValidator {
 		else if(expression instanceof Projection){
 			return validateProjection();
 		}
-		else if(expression instanceof FunctionReference){
-			return validateFunctionReference();
-		}
 		
 		return true;
 	}
@@ -129,17 +126,6 @@ public class PathExpressionValidator {
 			if(!found) return false;
 		}
 		
-		return true;
-	}
-	
-	/**
-	 * Validates a {@link FunctionReference}
-	 * @return True if the tested function reference is valid, False if not
-	 */
-	private boolean validateFunctionReference(){
-		FunctionReference func_exp = (FunctionReference) expression;
-		// Test that referred function is not a null object
-		if(func_exp.getRefferedFunction() == null) return false;
 		return true;
 	}
 }

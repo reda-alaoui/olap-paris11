@@ -21,7 +21,10 @@ import schema.Attribute.DataType;
 import schema.implementation.AttributeImpl;
 import schema.implementation.DataSchemaImpl;
 import schema.implementation.FunctionImpl;
-
+/**
+ * Test {@link OlapQueryImpl}
+ * @author Julien.C
+ */
 public class OlapQueryImplTest {
 
 	@BeforeClass

@@ -8,6 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import query.implementation.PairingImpl;
+/**
+ * Test {@link PairingImpl}
+ */
 public class PairingImplTest {
 
 	@BeforeClass

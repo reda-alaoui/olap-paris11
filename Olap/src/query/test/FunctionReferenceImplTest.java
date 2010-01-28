@@ -3,7 +3,10 @@ package query.test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-
+import query.implementation.FunctionReferenceImpl;
+/**
+ * Test {@link FunctionReferenceImpl}
+ */
 public class FunctionReferenceImplTest {
 
 	@Before

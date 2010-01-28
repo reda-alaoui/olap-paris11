@@ -36,6 +36,7 @@ import schema.implementation.FunctionImpl;
 
 /**
  * Test each method of QueryFactoryImpl
+ * @author Julien.C
  */
 public class QueryFactoryImplTest {
 

@@ -8,6 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import query.implementation.ProjectionImpl;
+/**
+ * Test {@link ProjectionImpl}
+ */
 public class ProjectionImplTest {
 
 	@BeforeClass

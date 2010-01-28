@@ -8,6 +8,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import query.utility.OlapQueryValidator;
+/**
+ * Test {@link OlapQueryValidator}
+ *
+ */
 public class OlapQueryValidatorTest {
 
 	@BeforeClass
