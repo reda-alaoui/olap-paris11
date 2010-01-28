@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema SYSTEM "query_1.dtd" >
 <query classifier="h" measure="p" aggregate="COUNT">
 	<function name="f"/>
 	
@@ -13,10 +14,10 @@
 	<projection name="p">
 		<domain>
 			<attribute name="O"/>
+			<attribute name="store"/>
 		</domain>
 		<range>
-			<atribute name="store"/>
+			<attribute name="store"/>
 		</range>
 	</projection>
-	
 </query>

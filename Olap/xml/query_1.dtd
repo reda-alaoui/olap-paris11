@@ -1,0 +1,29 @@
+<!ELEMENT query (function*, pairing*, composition*, projection*)>
+<!ATTLIST query
+		  classifier IDREF #REQUIRED
+		  measure IDREF #REQUIRED
+		  aggregate (COUNT|SUM|MIN|MAX|AVG) #REQUIRED >
+<!ELEMENT function EMPTY>
+<!ATTLIST function
+		  name ID #REQUIRED>
+<!ELEMENT pairing EMPTY>
+<!ATTLIST pairing
+          name ID #REQUIRED
+          leftoperand IDREF #REQUIRED 
+          rightoperand IDREF #REQUIRED>
+<!ELEMENT composition EMPTY>
+<!ATTLIST composition
+          name ID #REQUIRED
+          leftoperand IDREF #REQUIRED 
+          rightoperand IDREF #REQUIRED>
+<!ELEMENT projection(domain,range)>
+<!ATTLIST projection
+          name ID #REQUIRED>
+<!ELEMENT domain(attribute+)>
+<!ELEMENT attribute EMPTY>
+<!ATTLIST attribute
+          name CDATA #REQUIRED>
+<!ELEMENT range(attribute+)>
+<!ELEMENT attribute EMPTY>
+<!ATTLIST attribute
+          name CDATA #REQUIRED>
