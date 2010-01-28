@@ -46,10 +46,12 @@ public class FunctionReferenceImpl implements FunctionReference {
 		//save lists now, because referredFunction is immutable
 		//multiple access to these members will be more efficient
 		rangeList = new ArrayList<Attribute>();
-		rangeList.add(referredFunction.getRange());
-		
 		domainList = new ArrayList<Attribute>();
-		domainList.add(referredFunction.getDomain());
+		
+		if(referredFunction != null){
+			rangeList.add(referredFunction.getRange());
+			domainList.add(referredFunction.getDomain());
+		}
 	}
 
 	@Override

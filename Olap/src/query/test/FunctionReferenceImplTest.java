@@ -1,11 +1,20 @@
 package query.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import query.FunctionReference;
 import query.implementation.FunctionReferenceImpl;
+import schema.Attribute.DataType;
+import schema.implementation.AttributeImpl;
+import schema.implementation.FunctionImpl;
+
 /**
  * Test {@link FunctionReferenceImpl}
+ * @author Julien.C
  */
 public class FunctionReferenceImplTest {
 
@@ -15,7 +24,13 @@ public class FunctionReferenceImplTest {
 
 	@Test
 	public void testCreateFunctionReference() {
-		fail("Not yet implemented"); // TODO
+		FunctionReferenceImpl.createFunctionReference(
+				new FunctionImpl(
+					"q",
+					new AttributeImpl("O", DataType.ID),
+					new AttributeImpl("Quantity",DataType.INTEGER)
+				)
+		);
 	}
 
 	@Test
@@ -25,7 +40,28 @@ public class FunctionReferenceImplTest {
 
 	@Test
 	public void testEqualsObject() {
-		fail("Not yet implemented"); // TODO
+		FunctionReference f1 = FunctionReferenceImpl.createFunctionReference(
+				new FunctionImpl(
+					"q",
+					new AttributeImpl("O", DataType.ID),
+					new AttributeImpl("Quantity",DataType.INTEGER)
+				)
+		);
+		
+		FunctionReference f2 = FunctionReferenceImpl.createFunctionReference(
+				new FunctionImpl(
+					"q",
+					new AttributeImpl("O", DataType.ID),
+					new AttributeImpl("Quantity",DataType.INTEGER)
+				)
+		);
+		
+		assertEquals(f1,f2);
+		
+		FunctionReference f3 = FunctionReferenceImpl.createFunctionReference(null);
+		FunctionReference f4 = FunctionReferenceImpl.createFunctionReference(null);
+		
+		assertEquals(f3,f4);
 	}
 
 	@Test

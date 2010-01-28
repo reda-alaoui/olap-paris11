@@ -13,13 +13,25 @@ import schema.Attribute;
  * @author Julien.C
  * @author Reda
  */
-
 public class CompositionImpl implements Composition {
 	
-	PathExpression leftOperand;
+	/**
+	 * The left operand.
+	 */
+	private PathExpression leftOperand;
 	
-	PathExpression rightOperand;
+	/**
+	 * The right operand
+	 */
+	private PathExpression rightOperand;
 	
+	/**
+	 * create Composition by passing its two operand.
+	 * Left operand will be apply to right operand.
+	 * @param leftOperand - The left operand
+	 * @param rightOperand - The right operand
+	 * @return
+	 */
 	public static Composition createComposition(PathExpression leftOperand,
 			PathExpression rightOperand){
 		return new CompositionImpl(leftOperand,rightOperand);
