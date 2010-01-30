@@ -3,11 +3,15 @@ package query.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import query.FunctionReference;
 import query.implementation.FunctionReferenceImpl;
+import schema.Attribute;
+import schema.Function;
 import schema.Attribute.DataType;
 import schema.implementation.AttributeImpl;
 import schema.implementation.FunctionImpl;
@@ -31,11 +35,6 @@ public class FunctionReferenceImplTest {
 					new AttributeImpl("Quantity",DataType.INTEGER)
 				)
 		);
-	}
-
-	@Test
-	public void testFunctionReferenceImpl() {
-		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
@@ -66,17 +65,53 @@ public class FunctionReferenceImplTest {
 
 	@Test
 	public void testGetDomain() {
-		fail("Not yet implemented"); // TODO
+		FunctionReference f1 = FunctionReferenceImpl.createFunctionReference(
+				new FunctionImpl(
+					"q",
+					new AttributeImpl("O", DataType.ID),
+					new AttributeImpl("Quantity",DataType.INTEGER)
+				)
+		);
+		
+		ArrayList<Attribute> domainList = new ArrayList<Attribute>();
+		domainList.add(new AttributeImpl("O", DataType.ID));
+		
+		assertEquals(f1.getDomain().next(),domainList.iterator().next());
 	}
 
 	@Test
 	public void testGetRange() {
-		fail("Not yet implemented"); // TODO
+		FunctionReference f1 = FunctionReferenceImpl.createFunctionReference(
+				new FunctionImpl(
+					"q",
+					new AttributeImpl("O", DataType.ID),
+					new AttributeImpl("Quantity",DataType.INTEGER)
+				)
+		);
+		
+		ArrayList<Attribute> rangeList = new ArrayList<Attribute>();
+		rangeList.add(new AttributeImpl("Quantity",DataType.INTEGER));
+		
+		assertEquals(f1.getRange().next(),rangeList.iterator().next());
 	}
 
 	@Test
 	public void testGetRefferedFunction() {
-		fail("Not yet implemented"); // TODO
+		FunctionReference f1 = FunctionReferenceImpl.createFunctionReference(
+				new FunctionImpl(
+					"q",
+					new AttributeImpl("O", DataType.ID),
+					new AttributeImpl("Quantity",DataType.INTEGER)
+				)
+		);
+		
+		FunctionImpl referredFunction = new FunctionImpl(
+				"q",
+				new AttributeImpl("O", DataType.ID),
+				new AttributeImpl("Quantity",DataType.INTEGER)
+		);
+		
+		assertEquals(f1.getRefferedFunction(),referredFunction);
 	}
 
 }
