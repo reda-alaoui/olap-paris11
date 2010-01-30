@@ -4,8 +4,9 @@
 package schema;
 
 /**
+ * An attribute is defined by a name and a data type
  * @author Reda
- *
+ * @see DataType
  */
 public interface Attribute {
 	
@@ -16,8 +17,12 @@ public interface Attribute {
 	String getName();
 	
 	/**
-	 * @author Reda
-	 *
+	 *	Enumeration of data types that an attribute can take:
+	 *	<pre>	- ID
+	 *	- INTEGER
+	 *	- NUMBER
+	 *	- STRING
+	 *</pre>
 	 */
 	enum DataType{
 		ID,

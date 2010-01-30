@@ -21,8 +21,7 @@ public class PathExpressionValidator {
 	private final boolean validation;
 	
 	/**
-	 * @param The expression to validate
-	 * @param Schema containing the expression to validate
+	 * @param expression : The PathExpression to validate
 	 * @see PathExpression
 	 * @see DataSchema
 	 */

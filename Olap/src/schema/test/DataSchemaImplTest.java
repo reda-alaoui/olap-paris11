@@ -24,6 +24,9 @@ import schema.implementation.FunctionImpl;
  */
 public class DataSchemaImplTest {
 
+	/**
+	 * Test method for {@link DataSchemaImpl#DataSchemaImpl(String, java.util.List, java.util.List)}
+	 */
 	@Test
 	public void testDataSchemaImpl() {
 		String name = "S";
@@ -45,7 +48,9 @@ public class DataSchemaImplTest {
 		new DataSchemaImpl(name,att_list,func_list);
 		
 	}
-
+	/**
+	 * Test method for {@link DataSchemaImpl#getName()}
+	 */
 	@Test
 	public void testGetName() {
 		String name = "S";
@@ -67,7 +72,9 @@ public class DataSchemaImplTest {
 		DataSchemaImpl schema = new DataSchemaImpl(name,att_list,func_list);
 		assertEquals(name, schema.getName());
 	}
-
+	/**
+	 * Test method for {@link DataSchemaImpl#getAttributeByName(String)}
+	 */
 	@Test
 	public void testGetAttributeByName() {
 		String name = "S";
@@ -94,7 +101,9 @@ public class DataSchemaImplTest {
 		assertEquals(new AttributeImpl("Supplier", DataType.STRING), schema.getAttributeByName("Supplier"));
 		assertEquals(new AttributeImpl("Category", DataType.STRING), schema.getAttributeByName("Category"));
 	}
-
+	/**
+	 * Test method for {@link DataSchemaImpl#getFunctionsByDomain(Attribute)}
+	 */
 	@Test
 	public void testGetFunctionsByDomain() {
 		String name = "S";
@@ -119,7 +128,9 @@ public class DataSchemaImplTest {
 		assertEquals(func_list.get(0), schema.getFunctionsByDomain(att_list.get(0)).next());
 		assertEquals(func_list.get(2), schema.getFunctionsByDomain(att_list.get(2)).next());
 	}
-
+	/**
+	 * Test method for {@link DataSchemaImpl#getFunctionByName(String)}
+	 */
 	@Test
 	public void testGetFunctionByName() {
 		String name = "S";
@@ -146,7 +157,9 @@ public class DataSchemaImplTest {
 		assertEquals(func_list.get(3), schema.getFunctionByName("h2"));
 		
 	}
-
+	/**
+	 * Test method for {@link DataSchemaImpl#getFunctionsByRange(Attribute)}
+	 */
 	@Test
 	public void testGetFunctionsByRange() {
 		String name = "S";
@@ -172,7 +185,9 @@ public class DataSchemaImplTest {
 		assertEquals(func_list.get(2), schema.getFunctionsByRange(att_list.get(3)).next());
 		assertEquals(func_list.get(3), schema.getFunctionsByRange(att_list.get(4)).next());
 	}
-
+	/**
+	 * Test method for {@link DataSchemaImpl#getAttributeIterator()}
+	 */
 	@Test
 	public void testGetAttributeIterator() {
 		String name = "S";
@@ -200,7 +215,9 @@ public class DataSchemaImplTest {
 			i++;
 		}
 	}
-
+	/**
+	 * Test method for {@link DataSchemaImpl#getFunctionIterator()}
+	 */
 	@Test
 	public void testGetFunctionIterator() {
 		String name = "S";

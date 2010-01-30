@@ -6,8 +6,10 @@ package schema;
 import java.util.Iterator;
 
 /**
+ * A data schema is defined by a name, a list of attributes and a list of functions
  * @author Reda
- *
+ * @see Attribute
+ * @see Function
  */
 public interface DataSchema {
 	

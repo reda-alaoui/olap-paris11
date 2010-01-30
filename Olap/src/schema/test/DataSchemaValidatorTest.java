@@ -53,7 +53,8 @@ public class DataSchemaValidatorTest {
 	}
 
 	/**
-	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
+	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.</br>
+	 * Validation of a valid schema.
 	 */
 	@Test
 	public void testGetValidation1() {
@@ -81,7 +82,8 @@ public class DataSchemaValidatorTest {
 	}
 	
 	/**
-	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
+	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.</br>
+	 * Validation of a schema containing two attributes having the same name.
 	 */
 	@Test
 	public void testGetValidation2() {
@@ -110,7 +112,8 @@ public class DataSchemaValidatorTest {
 	}
 	
 	/**
-	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
+	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.</br>
+	 * Validation of a schema containing two functions having the same name.
 	 */
 	@Test
 	public void testGetValidation3() {
@@ -139,7 +142,8 @@ public class DataSchemaValidatorTest {
 	}
 	
 	/**
-	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
+	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.</br>
+	 * Validation of a schema containing more than one root
 	 */
 	@Test
 	public void testGetValidation4() {
@@ -169,6 +173,7 @@ public class DataSchemaValidatorTest {
 	}
 	/**
 	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
+	 * Validation of a cyclic schema.
 	 */
 	@Test
 	public void testGetValidation5() {
@@ -199,6 +204,7 @@ public class DataSchemaValidatorTest {
 	}
 	/**
 	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
+	 * Validation of a schema containing a node not linked to the root.
 	 */
 	@Test
 	public void testGetValidation6() {
@@ -227,7 +233,8 @@ public class DataSchemaValidatorTest {
 	}
 	
 	/**
-	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.
+	 * Test method for {@link schema.utility.DataSchemaValidator#getValidation()}.</br>
+	 * Validation of an invalid schema.
 	 * @throws IOException 
 	 * @throws JDOMException 
 	 */

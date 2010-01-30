@@ -1,7 +1,6 @@
 package query.test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
@@ -11,7 +10,6 @@ import org.junit.Test;
 import query.FunctionReference;
 import query.implementation.FunctionReferenceImpl;
 import schema.Attribute;
-import schema.Function;
 import schema.Attribute.DataType;
 import schema.implementation.AttributeImpl;
 import schema.implementation.FunctionImpl;

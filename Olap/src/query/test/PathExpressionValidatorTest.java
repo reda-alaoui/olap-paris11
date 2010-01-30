@@ -92,29 +92,51 @@ public class PathExpressionValidatorTest {
 		pairing2 = PairingImpl.createPairing(pairing1, function1);
 		
 	}
-
+	/**
+	 * Test method for {@link PathExpressionValidator#PathExpressionValidator(query.PathExpression)}
+	 */
 	@Test
 	public void testPathExpressionValidator() {
 		new PathExpressionValidator(composition1);
 	}
-
+	/**
+	 * Test method for {@link PathExpressionValidator#getValidation()}.</br>
+	 * Function reference validation
+	 */
 	@Test
-	public void testGetValidation() {
+	public void testGetValidation1() {
 		// Validation of a function reference
 		assertTrue(new PathExpressionValidator(function1).getValidation());
-		
+	}
+	/**
+	 * Test method for {@link PathExpressionValidator#getValidation()}.</br>
+	 * Composition validation
+	 */
+	@Test
+	public void testGetValidation2() {
 		// Validation of a valid composition
 		assertTrue(new PathExpressionValidator(composition1).getValidation());
-		
 		// Validation of an invalid composition
 		assertFalse(new PathExpressionValidator(composition2).getValidation());
-		
+	}
+	/**
+	 * Test method for {@link PathExpressionValidator#getValidation()}.</br>
+	 * Projection validation
+	 */
+	@Test
+	public void testGetValidation3() {
 		// Validation of a valid projection
 		assertTrue(new PathExpressionValidator(projection1).getValidation());
 		
 		// Validation of an invalid projection
 		assertFalse(new PathExpressionValidator(projection2).getValidation());
-		
+	}
+	/**
+	 * Test method for {@link PathExpressionValidator#getValidation()}.</br>
+	 * Pairing validation
+	 */
+	@Test
+	public void testGetValidation4() {
 		// Validation of a valid pairing
 		assertTrue(new PathExpressionValidator(pairing1).getValidation());
 		

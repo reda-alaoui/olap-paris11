@@ -20,7 +20,14 @@ public class DataSchemaImpl implements DataSchema{
 	private final String name;
 	private final List<Attribute> attribute_list;
 	private final List<Function> function_list;
-
+	/**
+	 * DataSchema's constructor
+	 * @param name : DataSchema's name
+	 * @param attribute_list : DataSchema's list of attributes
+	 * @param function_list : DataSchema's list of functions
+	 * @see Attribute
+	 * @see Function
+	 */
 	public DataSchemaImpl(String name, List<Attribute> attribute_list, List<Function> function_list) {
 		this.name = name;
 		this.attribute_list = new ArrayList<Attribute>(attribute_list);

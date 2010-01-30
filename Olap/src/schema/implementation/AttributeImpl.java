@@ -12,7 +12,12 @@ import schema.Attribute;
 public class AttributeImpl implements Attribute {
 	private final String name;
 	private final DataType dataType;
-	
+	/**
+	 * Attribute's constructor
+	 * @param name : Attribute's name
+	 * @param dataType : Attribute's data type
+	 * @see DataType
+	 */
 	public AttributeImpl(String name, DataType dataType) {
 		this.name = name;
 		this.dataType = dataType;

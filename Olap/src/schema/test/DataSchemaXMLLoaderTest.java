@@ -11,9 +11,8 @@ import schema.utility.DataSchemaXMLLoader;
 
 
 /**
+ * Test case for {@link DataSchemaXMLLoader}
  * @author Reda
- *
- *
  */
 public class DataSchemaXMLLoaderTest {
 	/**

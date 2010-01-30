@@ -13,8 +13,8 @@ import schema.implementation.AttributeImpl;;
 
 
 /**
+ * Test case for {@link FunctionImpl}
  * @author Reda
- *
  */
 public class FunctionImplTest {
 	/**
