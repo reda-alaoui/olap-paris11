@@ -41,9 +41,9 @@ public class PairingImplTest {
 	 * Range of the pairing should be equals to the range of it's attributes
 	 */
 	public void setUp() throws Exception {
-		Attribute domain = new AttributeImpl("O", DataType.STRING);
+		Attribute domain = new AttributeImpl("O", DataType.ID);
 		Attribute left_range = new AttributeImpl("Store", DataType.STRING);
-		Attribute right_range = new AttributeImpl("Product", DataType.ID);
+		Attribute right_range = new AttributeImpl("Product", DataType.STRING);
 		
 		leftOperand = new FunctionReferenceImpl(
 				new FunctionImpl("g", domain, left_range));
