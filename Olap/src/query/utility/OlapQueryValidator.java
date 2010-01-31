@@ -41,7 +41,10 @@ public class OlapQueryValidator {
 			Iterator<Attribute> range_iterator = measure.getRange();
 			
 			while(range_iterator.hasNext()){
-				if(range_iterator.next().getDataType() == DataType.STRING ) return false;
+				if(range_iterator.next().getDataType() == DataType.STRING ){ 
+					System.out.println("Aggregation function is not compatible with the measure");
+					return false;
+				}
 			}
 		}
 		return true;
@@ -60,14 +63,26 @@ public class OlapQueryValidator {
 		
 		Iterator<Attribute> classifier_domain = query.getClassifier().getDomain();
 		if(classifier_domain.hasNext()){
-			if(!classifier_domain.next().equals(root)) return false;
-			if(classifier_domain.hasNext()) return false;
+			if(!classifier_domain.next().equals(root)){
+				System.out.println("Source(classifier) doesn't equal root");
+				return false;
+			}
+			if(classifier_domain.hasNext()){
+				System.out.println("Source(classifier) doesn't equal root");
+				return false;
+			}
 		}
 		
 		Iterator<Attribute> measure_domain = query.getMeasure().getDomain();
 		if(measure_domain.hasNext()){
-			if(!measure_domain.next().equals(root)) return false;
-			if(measure_domain.hasNext()) return false;
+			if(!measure_domain.next().equals(root)){
+				System.out.println("Source(measure) doesn't equal root");
+				return false;
+			}
+			if(measure_domain.hasNext()){
+				System.out.println("Source(measure) doesn't equal root");
+				return false;
+			}
 		}
 		
 		return true;

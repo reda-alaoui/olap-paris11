@@ -76,6 +76,7 @@ public class PathExpressionValidator {
 		
 		if(left_domain.equals(right_range)) return true;
 		
+		System.out.println("Compostion is not valid: left operand's domain doesn't equal right operand's range");
 		return false;
 	}
 	
@@ -101,6 +102,7 @@ public class PathExpressionValidator {
 		
 		if(left_domain.equals(right_domain)) return true;
 		
+		System.out.println("Pairing is not valid: left operand's domain doesn't equal right operand's domain");
 		return false;
 	}
 	
@@ -122,7 +124,10 @@ public class PathExpressionValidator {
 			while(genuine_range.hasNext() && !found){
 				if(att.equals(genuine_range.next())) found = true;
 			}
-			if(!found) return false;
+			if(!found){
+				System.out.println("Projection is not valid: domain doesn't contain range");
+				return false;
+			}
 		}
 		
 		return true;
