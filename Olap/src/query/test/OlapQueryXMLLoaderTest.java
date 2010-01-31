@@ -4,15 +4,12 @@ import java.io.File;
 
 import org.junit.Test;
 
-import query.OlapQuery;
 import query.utility.OlapQueryXMLLoader;
 /**
  * Test {@link OlapQueryXMLLoader}
  * @author Sylvestre
  */
 public class OlapQueryXMLLoaderTest {
-
-	private OlapQuery query;
 
 	@Test
 	public void testOlapQueryXMLLoader() {
