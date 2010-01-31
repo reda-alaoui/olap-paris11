@@ -145,7 +145,7 @@ public class QueryFactoryImplTest {
 			
 			OlapQuery olapQuery =q.olapQuery(
 				q.composition(	
-					q.projection(attList2, attList),
+					q.projection(attList, attList2),
 					q.pairing(
 							q.function("q"),
 							q.function("f")
@@ -163,7 +163,7 @@ public class QueryFactoryImplTest {
 			attList4.add(new AttributeImpl("Product", DataType.STRING));
 			
 			OlapQuery olapQuery2 = OlapQueryImpl.createOlapQuery(q.composition(	
-					q.projection(attList2, attList),
+					q.projection(attList, attList2),
 					q.pairing(
 							q.function("q"),
 							q.function("f")
@@ -195,7 +195,7 @@ public class QueryFactoryImplTest {
 	}
 
 	/**
-	 * Test method for {@link query.implementation.QueryFactoryImpl#projection(query.PathExpression, java.util.List)}.
+	 * Test method for {@link query.implementation.QueryFactoryImpl#projection(java.util.List, query.PathExpression)}.
 	 * @throws PathExpressionValidationException 
 	 */
 	@Test
@@ -210,7 +210,7 @@ public class QueryFactoryImplTest {
 			ArrayList<Attribute> attList2 = new ArrayList<Attribute>();
 			attList2.add(new AttributeImpl("Product", DataType.STRING));
 			
-			Projection proj = q.projection(attList2,attList);
+			Projection proj = q.projection(attList,attList2);
 			Projection proj2 = ProjectionImpl.createProjection(attList,attList2);
 			
 			assertEquals(proj, proj2);

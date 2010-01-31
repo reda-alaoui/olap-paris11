@@ -77,7 +77,7 @@ public class OlapQueryImplTest {
 		
 		try {
 			OlapQueryImpl.createOlapQuery(q.composition(	
-					q.projection(attList2, attList),
+					q.projection(attList, attList2),
 					q.pairing(
 							q.function("q"),
 							q.function("f")
@@ -99,7 +99,7 @@ public class OlapQueryImplTest {
 		
 		try {
 			OlapQuery query = OlapQueryImpl.createOlapQuery(q.composition(	
-					q.projection(attList2, attList),
+					q.projection(attList, attList2),
 					q.pairing(
 							q.function("q"),
 							q.function("f")
@@ -126,7 +126,7 @@ public class OlapQueryImplTest {
 		try {
 			OlapQuery query = OlapQueryImpl.createOlapQuery(
 					q.composition(	
-						q.projection(attList2, attList),
+						q.projection(attList, attList2),
 						q.pairing(
 								q.function("q"),
 								q.function("f")
@@ -137,7 +137,7 @@ public class OlapQueryImplTest {
 			
 			assertEquals(query.getClassifier(), 
 					q.composition(	
-						q.projection(attList2, attList),
+						q.projection(attList, attList2),
 						q.pairing(
 							q.function("q"),
 							q.function("f")
@@ -164,7 +164,7 @@ public class OlapQueryImplTest {
 		try {
 			OlapQuery query = OlapQueryImpl.createOlapQuery(
 					q.composition(	
-						q.projection(attList2, attList),
+						q.projection(attList, attList2),
 						q.pairing(
 								q.function("q"),
 								q.function("f")

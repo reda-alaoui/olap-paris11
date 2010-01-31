@@ -64,16 +64,12 @@ public class OlapQueryValidatorTest {
 		attList2.add(new AttributeImpl("Product", DataType.STRING));
 		
 		
-		try {
-			query = OlapQueryImpl.createOlapQuery(q.composition(	
+		query = OlapQueryImpl.createOlapQuery(q.composition(	
 					q.projection(attList, attList2),
 					q.pairing(
 							q.function("q"),
 							q.function("f")
 					)), q.function("q"), AggregationFunction.COUNT);
-		} catch (PathExpressionValidationException e) {
-			fail();
-		}
 		
 		validation = false;
 		

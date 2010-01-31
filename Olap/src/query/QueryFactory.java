@@ -69,11 +69,11 @@ public interface QueryFactory {
 	
 	/**
 	 * Create a {@link ProjectionImpl} object by passing Path Expression and a list of attribute to restrict on
-	 * @param p - the PathExpression
 	 * @param selectList - the list of attributes to restrict on 
+	 * @param p - the PathExpression
 	 * @return
 	 */
-	Projection projection(List<Attribute> selectList, List<Attribute> domain) throws PathExpressionValidationException;;
+	Projection projection(List<Attribute> domain, List<Attribute> selectList) throws PathExpressionValidationException;;
 	
 	/**
 	 * Build the OlapQuery by passing its classifier, measure and aggregate operator.
