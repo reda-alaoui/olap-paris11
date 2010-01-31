@@ -69,8 +69,8 @@ public interface QueryFactory {
 	
 	/**
 	 * Create a {@link ProjectionImpl} object by passing Path Expression and a list of attribute to restrict on
-	 * @param selectList - the list of attributes to restrict on 
 	 * @param p - the PathExpression
+	 * @param selectList - the list of attributes to restrict on 
 	 * @return
 	 */
 	Projection projection(List<Attribute> domain, List<Attribute> selectList) throws PathExpressionValidationException;;
