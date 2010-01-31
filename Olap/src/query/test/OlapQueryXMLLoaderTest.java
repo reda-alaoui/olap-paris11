@@ -1,44 +1,34 @@
 package query.test;
 
-import static org.junit.Assert.*;
+import java.io.File;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
+import query.OlapQuery;
 import query.utility.OlapQueryXMLLoader;
 /**
  * Test {@link OlapQueryXMLLoader}
- *
+ * @author Sylvestre
  */
 public class OlapQueryXMLLoaderTest {
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
+	private OlapQuery query;
 
 	@Before
 	public void setUp() throws Exception {
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	@Test
 	public void testOlapQueryXMLLoader() {
-		fail("Not yet implemented"); // TODO
+		new OlapQueryXMLLoader(new File("xml/sample_query.xml"));
 	}
 
 	@Test
 	public void testGetQuery() {
-		fail("Not yet implemented"); // TODO
+		OlapQueryXMLLoader query = new OlapQueryXMLLoader(new File("xml/sample_query.xml"));
+		query.getQuery();
 	}
 
 }
