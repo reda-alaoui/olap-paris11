@@ -2,7 +2,6 @@ package query.test;
 
 import java.io.File;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import query.OlapQuery;
@@ -14,11 +13,6 @@ import query.utility.OlapQueryXMLLoader;
 public class OlapQueryXMLLoaderTest {
 
 	private OlapQuery query;
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
 
 	@Test
 	public void testOlapQueryXMLLoader() {
