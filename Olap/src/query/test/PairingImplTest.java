@@ -20,6 +20,8 @@ import schema.implementation.AttributeImpl;
 import schema.implementation.FunctionImpl;
 /**
  * Test {@link PairingImpl}
+ * This class tests the pairing implementation
+ * @author Sylvestre
  */
 public class PairingImplTest {
 
@@ -33,6 +35,11 @@ public class PairingImplTest {
 	
 	
 	@Before
+	/**
+	 * Here we create attributes and pairings
+	 * Attributes of a pairing should have the same domain
+	 * Range of the pairing should be equals to the range of it's attributes
+	 */
 	public void setUp() throws Exception {
 		Attribute domain = new AttributeImpl("O", DataType.STRING);
 		Attribute left_range = new AttributeImpl("Store", DataType.STRING);
@@ -49,21 +56,34 @@ public class PairingImplTest {
 	}
 
 	@Test
+	/**
+	 * Testing function equals of pairing
+	 */
 	public void testEqualsObject() {
 		assertTrue(pairing1.equals(pairing2));
 	}
 
 	@Test
+	/**
+	 * Testing function getLeftOperand of pairing
+	 */
 	public void testGetLeftOperand() {
 		assertEquals(pairing1.getLeftOperand(), leftOperand);
 	}
 
 	@Test
+	/**
+	 * Testing function getRightOperand of pairing
+	 */
 	public void testGetRightOperand() {
 		assertEquals(pairing1.getRightOperand(), rightOperand);
 	}
 
 	@Test
+	/**
+	 * Testing function getDomain of pairing
+	 * Attributes should have the same domain
+	 */
 	public void testGetDomain() {
 		List<Attribute> list1 = new ArrayList<Attribute>();
 		Iterator<Attribute> it1 = pairing1.getDomain();
@@ -81,6 +101,10 @@ public class PairingImplTest {
 	}
 
 	@Test
+	/**
+	 * Testing function getRange of pairing
+	 * Range of the pairing should be equals to the range of it's attributes
+	 */
 	public void testGetRange() {
 		List<Attribute> list12 = new ArrayList<Attribute>();
 		Iterator<Attribute> it1 = leftOperand.getRange();
