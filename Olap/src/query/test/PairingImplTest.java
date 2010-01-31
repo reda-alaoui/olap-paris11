@@ -1,6 +1,7 @@
 package query.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -29,9 +30,13 @@ public class PairingImplTest {
 	
 	private PathExpression rightOperand;
 	
+	private PathExpression rightOperand2;
+	
 	private Pairing pairing1;
 	
 	private Pairing pairing2;
+	
+	private Pairing pairing3;
 	
 	
 	@Before
@@ -44,25 +49,38 @@ public class PairingImplTest {
 		Attribute domain = new AttributeImpl("O", DataType.ID);
 		Attribute left_range = new AttributeImpl("Store", DataType.STRING);
 		Attribute right_range = new AttributeImpl("Product", DataType.STRING);
+		Attribute right_range2 = new AttributeImpl("Date", DataType.INTEGER);
 		
 		leftOperand = new FunctionReferenceImpl(
 				new FunctionImpl("g", domain, left_range));
 		rightOperand = new FunctionReferenceImpl(
 				new FunctionImpl("h", domain, right_range));
+		rightOperand2 = new FunctionReferenceImpl(
+				new FunctionImpl("f", domain, right_range2));
 		
 		pairing1 = PairingImpl.createPairing(leftOperand, rightOperand);
 		
 		pairing2 = PairingImpl.createPairing(leftOperand, rightOperand);
+		
+		pairing3 = PairingImpl.createPairing(leftOperand, rightOperand2);
 	}
 
 	@Test
 	/**
 	 * Testing function equals of pairing
 	 */
-	public void testEqualsObject() {
+	public void testEqualsObject1() {
 		assertTrue(pairing1.equals(pairing2));
 	}
 
+	@Test
+	/**
+	 * Testing function equals of pairing
+	 */
+	public void testEqualsObject2() {
+		assertFalse(pairing1.equals(pairing3));
+	}
+	
 	@Test
 	/**
 	 * Testing function getLeftOperand of pairing
