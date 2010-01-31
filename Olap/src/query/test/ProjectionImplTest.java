@@ -48,7 +48,7 @@ public class ProjectionImplTest {
 		selectedAttribute.add(new AttributeImpl("Store", DataType.STRING));
 		selectedAttribute.add(new AttributeImpl("Product", DataType.STRING));
 		
-		projection = ProjectionImpl.createProjection(selectedAttribute, domain);
+		projection = ProjectionImpl.createProjection(domain, selectedAttribute);
 		
 	}
 

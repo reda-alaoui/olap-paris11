@@ -18,12 +18,12 @@ public class ProjectionImpl implements Projection {
 
 	/**
 	 * Construct from attribute list and domain
-	 * @param selectedAttribute - attributes to project on
 	 * @param domain - domain of the operator
+	 * @param selectedAttribute - attributes to project on
 	 * @return
 	 */
-	public static Projection createProjection(List<Attribute> selectedAttribute, List<Attribute> domain) {
-		return new ProjectionImpl(selectedAttribute, domain);
+	public static Projection createProjection(List<Attribute> domain, List<Attribute> selectedAttribute) {
+		return new ProjectionImpl(domain, selectedAttribute);
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public class ProjectionImpl implements Projection {
 	 * Construct from attribute list and domain
 	 * @param selectedAttribute
 	 */
-	private ProjectionImpl(List<Attribute> selectedAttribute, List<Attribute> domain) {
+	private ProjectionImpl(List<Attribute> domain, List<Attribute> selectedAttribute) {
 		super();
 		this.selectedAttribute = selectedAttribute;
 		this.domain = domain;

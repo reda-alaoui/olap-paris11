@@ -80,8 +80,8 @@ public class PathExpressionValidatorTest {
 		domain.add(left_domain);
 		domain.add(left_range);
 		domain.add(right_domain);
-		projection1 = ProjectionImpl.createProjection(range, domain);
-		projection2 = ProjectionImpl.createProjection(domain, range);
+		projection1 = ProjectionImpl.createProjection(domain, range);
+		projection2 = ProjectionImpl.createProjection(range, domain);
 		
 		// Pairing instantiations
 		Attribute att = new AttributeImpl("quantity", DataType.INTEGER);
