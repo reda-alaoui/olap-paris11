@@ -82,7 +82,7 @@ public class PairingImplTest {
 	@Test
 	/**
 	 * Testing function getDomain of pairing
-	 * Attributes should have the same domain
+	 * Operands should have the same domain
 	 */
 	public void testGetDomain() {
 		List<Attribute> list1 = new ArrayList<Attribute>();
