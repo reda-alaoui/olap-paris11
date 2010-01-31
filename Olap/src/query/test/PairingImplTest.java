@@ -1,7 +1,6 @@
 package query.test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -32,31 +31,26 @@ public class PairingImplTest {
 	
 	private Pairing pairing2;
 	
-	private Pairing pairing3;
-	
 	
 	@Before
 	public void setUp() throws Exception {
-		Attribute left_domain = new AttributeImpl("Store", DataType.STRING);
-		Attribute left_range = new AttributeImpl("Product", DataType.STRING);
-		Attribute right_domain = new AttributeImpl("O", DataType.ID);
+		Attribute domain = new AttributeImpl("O", DataType.STRING);
+		Attribute left_range = new AttributeImpl("Store", DataType.STRING);
+		Attribute right_range = new AttributeImpl("Product", DataType.ID);
 		
 		leftOperand = new FunctionReferenceImpl(
-				new FunctionImpl("g", left_domain, left_range));
+				new FunctionImpl("g", domain, left_range));
 		rightOperand = new FunctionReferenceImpl(
-				new FunctionImpl("h", right_domain, left_domain));
+				new FunctionImpl("h", domain, right_range));
 		
 		pairing1 = PairingImpl.createPairing(leftOperand, rightOperand);
 		
 		pairing2 = PairingImpl.createPairing(leftOperand, rightOperand);
-		
-		pairing3 = PairingImpl.createPairing(leftOperand, rightOperand);
 	}
 
 	@Test
 	public void testEqualsObject() {
 		assertTrue(pairing1.equals(pairing2));
-		assertFalse(pairing1.equals(pairing3));
 	}
 
 	@Test
@@ -88,19 +82,24 @@ public class PairingImplTest {
 
 	@Test
 	public void testGetRange() {
-		List<Attribute> list1 = new ArrayList<Attribute>();
-		Iterator<Attribute> it1 = pairing1.getRange();
+		List<Attribute> list12 = new ArrayList<Attribute>();
+		Iterator<Attribute> it1 = leftOperand.getRange();
 		while(it1.hasNext()){
-			list1.add(it1.next());
+			list12.add(it1.next());
 		}
 		
-		List<Attribute> list2 = new ArrayList<Attribute>();
-		Iterator<Attribute> it2 = leftOperand.getRange();
+		Iterator<Attribute> it2 = rightOperand.getRange();
 		while(it2.hasNext()){
-			list2.add(it2.next());
+			list12.add(it2.next());
 		}
 		
-		assertEquals(list1, list2);
+		List<Attribute> list3 = new ArrayList<Attribute>();
+		Iterator<Attribute> it3 = pairing1.getRange();
+		while(it3.hasNext()){
+			list3.add(it3.next());
+		}
+		
+		assertEquals(list12, list3);
 	}
 
 }
