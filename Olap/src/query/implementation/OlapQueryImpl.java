@@ -19,6 +19,7 @@ public class OlapQueryImpl implements OlapQuery {
 		return new OlapQueryImpl(classifier, measure, aggregate);
 	}
 	private PathExpression classifier;
+	
 	private PathExpression measure;
 	
 	private AggregationFunction aggregate;
