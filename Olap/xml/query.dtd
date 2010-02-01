@@ -1,4 +1,4 @@
-<!ELEMENT query (function|pairing|composition|projection)*>
+<!ELEMENT query (function|pairing|composition|projection)+>
 <!ATTLIST query
 		  classifier IDREF #REQUIRED
 		  measure IDREF #REQUIRED
