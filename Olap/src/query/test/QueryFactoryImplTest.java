@@ -143,6 +143,7 @@ public class QueryFactoryImplTest {
 			ArrayList<Attribute> attList2 = new ArrayList<Attribute>();
 			attList2.add(new AttributeImpl("Product", DataType.STRING));
 			
+			// < P(product) o (q^f) , q , COUNT >
 			OlapQuery olapQuery =q.olapQuery(
 				q.composition(	
 					q.projection(attList, attList2),
@@ -153,7 +154,7 @@ public class QueryFactoryImplTest {
 				),
 				q.function("q"),
 				AggregationFunction.COUNT
-				);
+			);
 			
 			ArrayList<Attribute> attList3 = new ArrayList<Attribute>();
 			attList3.add(new AttributeImpl("Quantity",DataType.INTEGER));
