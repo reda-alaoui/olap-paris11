@@ -12,6 +12,7 @@ import query.QueryFactory.AggregationFunction;
  * &nbsp;&nbsp;&nbsp; -> op is an operation over the target of v </br></br>
  * The expression u will be referred to as the classifier of Q and the expression v as the measure of Q. 
  * @author Reda
+ * @author Julien.C
  */
 public interface OlapQuery {
 	

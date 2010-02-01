@@ -8,6 +8,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import query.OlapQuery;
 import query.PathExpression;
 import query.QueryFactory.AggregationFunction;
 import query.implementation.CompositionImpl;
@@ -18,7 +19,7 @@ import schema.Attribute;
 import schema.DataSchema;
 
 /**
- * Handles an xml file validating the {@link DataSchema} DTD
+ * Handles an xml file validating the {@link OlapQuery} DTD
  * @author Julien.C
  */
 public class OlapQueryHandler extends DefaultHandler{

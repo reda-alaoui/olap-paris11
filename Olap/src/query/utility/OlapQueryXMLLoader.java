@@ -17,7 +17,7 @@ import query.implementation.QueryFactoryImpl;
 import schema.DataSchema;
 
 /**
- * Parse an XML document into an OlapQuery if the file is valid
+ * Parse an XML document into an OlapQuery if the file is valid.
  * @author Julien.C
  * @author Reda
  */
@@ -55,6 +55,10 @@ public class OlapQueryXMLLoader {
 		}
 	}
 	
+	/**
+	 * Return the OlapQuery or null if not valid
+	 * @return the OlapQuery
+	 */
 	public OlapQuery getQuery(){
 		return query;
 	}
