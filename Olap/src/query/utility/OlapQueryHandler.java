@@ -8,8 +8,10 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import query.FunctionReference;
 import query.PathExpression;
 import query.QueryFactory.AggregationFunction;
+import query.implementation.FunctionReferenceImpl;
 import schema.DataSchema;
 
 /**
@@ -30,12 +32,31 @@ public class OlapQueryHandler extends DefaultHandler{
 	
 	private String measureId;
 	
+	/**
+	 * The current projection node.
+	 * null if not on a Projection node
+	 */
 	private Object[] currentProjection;
+	
+	/**
+	 * The current projection id.
+	 * null if not on a Projection node
+	 */
 	private String currentProjectionId;
 
+	/**
+	 * All PathExpression Elements map
+	 */
 	private HashMap<String,Object[]> map;
 
+	/**
+	 * Are we process a domain node ?
+	 */
 	private boolean isDomain = false;
+	
+	OlapQueryHandler(){
+		
+	}
 	
 	/* (non-Javadoc)
 	 * @see org.xml.sax.helpers.DefaultHandler#startDocument()
@@ -58,11 +79,12 @@ public class OlapQueryHandler extends DefaultHandler{
 	}
 
 	private PathExpression construct(String opId) {
+		
 		Object[] objTab = map.get(opId);
 		OlapPathExpressionOperator type = (OlapPathExpressionOperator) objTab[0];
 		
 		switch (type) {
-		case FUNCTION:
+		case FUNCTION: FunctionReferenceImpl.createFunctionReference(function)
 			
 			break;
 
