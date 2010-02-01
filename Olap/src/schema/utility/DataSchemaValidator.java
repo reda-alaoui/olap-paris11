@@ -23,7 +23,7 @@ public class DataSchemaValidator {
 	private final boolean validation;
 	
 	/** 
-	 * @param The schema to validate
+	 * @param schema : The schema to validate
 	 */
 	public DataSchemaValidator(DataSchema schema){
 		this.schema = schema;

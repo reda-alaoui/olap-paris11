@@ -30,7 +30,7 @@ public class CompositionImpl implements Composition {
 	 * Left operand will be apply to right operand.
 	 * @param leftOperand - The left operand
 	 * @param rightOperand - The right operand
-	 * @return
+	 * @return a new composition
 	 */
 	public static Composition createComposition(PathExpression leftOperand,
 			PathExpression rightOperand){

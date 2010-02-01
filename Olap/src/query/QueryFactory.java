@@ -8,6 +8,7 @@ import query.implementation.ProjectionImpl;
 import query.utility.OlapQueryValidationException;
 import query.utility.PathExpressionValidationException;
 import schema.Attribute;
+import schema.Function;
 
 /**
  * QueryFactory is abbe to create an OLAPQuery by provide elementary parameter :
@@ -35,16 +36,15 @@ public interface QueryFactory {
 
 	/**
 	 * 
-	 * These aggregate function are available aggregate used as by {@link#OLAPQuery}
+	 * These aggregate function are available aggregate used as by {@link OlapQuery}
 	 */
 	public static enum AggregationFunction {COUNT, SUM, MIN, MAX, AVG};
 	
 	/**
 	 * Create a {@link FunctionReferenceImpl} by passing its name
 	 * @param name - the name of the function
-	 * @see function of schema
-	 * 
-	 * @return
+	 * @return a new function reference
+	 * @see Function
 	 */
 	FunctionReference function(String name) throws PathExpressionValidationException;;
 	 
@@ -53,7 +53,7 @@ public interface QueryFactory {
 	 * @param p1 - expression1
 	 * @param p2 - expression2
 	 * 
-	 * @return
+	 * @return a new composition
 	 * @throws Exception 
 	 */
 	Composition composition(PathExpression p1, PathExpression p2) throws PathExpressionValidationException;
@@ -63,26 +63,26 @@ public interface QueryFactory {
 	 * @param p1 - expression1
 	 * @param p2 - expression2
 	 * 
-	 * @return
+	 * @return a new pairing
 	 */
 	Pairing pairing(PathExpression p1, PathExpression p2) throws PathExpressionValidationException;;
 	
 	/**
 	 * Create a {@link ProjectionImpl} object by passing Path Expression and a list of attribute to restrict on
-	 * @param p - the PathExpression
-	 * @param selectList - the list of attributes to restrict on 
-	 * @return
+	 * @param domain - the domain of the projection
+	 * @param selectList - the range to restrict on
+	 * @return a new projection
 	 */
 	Projection projection(List<Attribute> domain, List<Attribute> selectList) throws PathExpressionValidationException;;
 	
 	/**
 	 * Build the OlapQuery by passing its classifier, measure and aggregate operator.
-	 * Theses params can be provide by OlapQuery itself.
-	 * @see {@link OlapQuery}
+	 * Theses params can be provided by OlapQuery itself.
 	 * @param c - the classifier	
 	 * @param m - the measure
 	 * @param op - the aggregate operator
-	 * @return
+	 * @return a new Olap query
+	 * @see OlapQuery
 	 */
 	OlapQuery olapQuery(	PathExpression c,
 	                      	PathExpression m,

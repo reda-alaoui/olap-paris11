@@ -195,7 +195,7 @@ public class QueryFactoryImplTest {
 	}
 
 	/**
-	 * Test method for {@link query.implementation.QueryFactoryImpl#projection(java.util.List, query.PathExpression)}.
+	 * Test method for {@link query.implementation.QueryFactoryImpl#projection(java.util.List, java.util.List)}.
 	 * @throws PathExpressionValidationException 
 	 */
 	@Test

@@ -16,7 +16,6 @@ public class AttributeImpl implements Attribute {
 	 * Attribute's constructor
 	 * @param name : Attribute's name
 	 * @param dataType : Attribute's data type
-	 * @see DataType
 	 */
 	public AttributeImpl(String name, DataType dataType) {
 		this.name = name;
