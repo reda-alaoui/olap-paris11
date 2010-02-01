@@ -1,6 +1,7 @@
 package query.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,9 +13,7 @@ import query.OlapQuery;
 import query.PathExpression;
 import query.QueryFactory.AggregationFunction;
 import query.implementation.QueryFactoryImpl;
-import query.utility.OlapQueryValidationException;
 import query.utility.OlapQueryXMLLoader;
-import query.utility.PathExpressionValidationException;
 import schema.Attribute;
 import schema.Function;
 import schema.Attribute.DataType;
@@ -61,32 +60,33 @@ public class OlapQueryXMLLoaderTest {
 			OlapQuery query = new OlapQueryXMLLoader(schema, new File("xml/sample_query.xml")).getQuery();
 			QueryFactoryImpl q =new QueryFactoryImpl(schema);
 			
-			ArrayList<Attribute> attList1 = new ArrayList<Attribute>();	
+			ArrayList<Attribute> attList1 = new ArrayList<Attribute>();
 			attList1.add(new AttributeImpl("Supplier", DataType.STRING));
 			attList1.add(new AttributeImpl("Category", DataType.STRING));
 			ArrayList<Attribute> attList2 = new ArrayList<Attribute>();
 			attList2.add(new AttributeImpl("Supplier", DataType.STRING));
 			
 			PathExpression classifier = q.composition(
+											q.projection(attList1, attList2),
 											q.pairing(
-												q.composition(
-														q.function("f2"),
-														q.function("f")
-												),
 												q.composition(
 														q.function("f1"),
 														q.function("f")
+												),
+												q.composition(
+														q.function("f2"),
+														q.function("f")
 												)
-											),
-											q.projection(attList1, attList2)
+											)
 										);
 			
 			PathExpression measure = q.function("q");
-			OlapQuery query2 = q.olapQuery(classifier, measure, AggregationFunction.SUM);
+			OlapQuery query2 = q.olapQuery(classifier, measure, AggregationFunction.COUNT);
 			
 			assertEquals(query, query2);
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			fail();
 		}
 	}

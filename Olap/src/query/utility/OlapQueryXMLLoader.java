@@ -32,7 +32,7 @@ public class OlapQueryXMLLoader {
 		
 		try {
 			parser = factory.newSAXParser();
-			query_handler = new OlapQueryHandler();
+			query_handler = new OlapQueryHandler(schema);
 			parser.parse(xml_file, query_handler);
 			
 		} catch (SAXException e) {
@@ -50,7 +50,7 @@ public class OlapQueryXMLLoader {
 					.getMeasure(), query_handler.getAggregate());
 		} catch (OlapQueryValidationException e) {
 			query = null;
-			System.err.println("Can't parse file "+xml_file.getAbsolutePath());
+			System.err.println("Can't parse file "+xml_file.getAbsolutePath() + ", request is not a valid olap request");
 			e.printStackTrace();
 		}
 	}

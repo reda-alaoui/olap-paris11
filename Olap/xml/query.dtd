@@ -16,14 +16,14 @@
           name ID #REQUIRED
           leftoperand IDREF #REQUIRED 
           rightoperand IDREF #REQUIRED>
-<!ELEMENT projection(domain,range)>
+<!ELEMENT projection (domain,range)>
 <!ATTLIST projection
           name ID #REQUIRED>
-<!ELEMENT domain(attribute+)>
+<!ELEMENT domain (attribute+)>
 <!ELEMENT attribute EMPTY>
 <!ATTLIST attribute
           name CDATA #REQUIRED>
-<!ELEMENT range(attribute+)>
+<!ELEMENT range (attribute+)>
 <!ELEMENT attribute EMPTY>
 <!ATTLIST attribute
           name CDATA #REQUIRED>

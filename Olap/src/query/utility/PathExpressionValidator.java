@@ -76,7 +76,16 @@ public class PathExpressionValidator {
 		
 		if(left_domain.equals(right_range)) return true;
 		
-		System.out.println("Compostion is not valid: left operand's domain doesn't equal right operand's range");
+		String strOut = "domain ";
+		for (Attribute attribute : left_domain) {
+			strOut += attribute +" ";
+		}
+		strOut += "; range ";
+		for (Attribute attribute : right_range) {
+			strOut += attribute +" ";
+		}
+		
+		System.out.println("Compostion is not valid: left operand's domain doesn't equal right operand's range;" +strOut);
 		return false;
 	}
 	

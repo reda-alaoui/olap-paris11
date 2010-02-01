@@ -23,6 +23,11 @@ public class AttributeImpl implements Attribute {
 	}
 	
 	@Override
+	public String toString() {
+		return "AttributeImpl [dataType=" + dataType + ", name=" + name + "]";
+	}
+
+	@Override
 	public DataType getDataType() {
 		return dataType;
 	}

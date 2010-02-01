@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE schema SYSTEM "query_1.dtd" >
-<query classifier="h" measure="q" aggregate="COUNT">
+<!DOCTYPE schema SYSTEM "query.dtd" >
+<query classifier="comp1" measure="q" aggregate="COUNT">
 
-	<composition name="comp1" leftoperand="pair1" rightoperand="proj1"/>
+	<composition name="comp1" leftoperand="proj1" rightoperand="pair1"/>
 
 	<pairing name="pair1" leftoperand="comp2" rightoperand="comp3"/>
 	
-	<composition name="comp2" leftoperand="f2" rightoperand="f"/>
+	<composition name="comp2" leftoperand="f1" rightoperand="f"/>
 	
-	<composition name="comp3" leftoperand="f1" rightoperand="f"/>
+	<composition name="comp3" leftoperand="f2" rightoperand="f"/>
 	
 	<function name="f"/>
 	

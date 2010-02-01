@@ -8,10 +8,13 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import query.FunctionReference;
 import query.PathExpression;
 import query.QueryFactory.AggregationFunction;
+import query.implementation.CompositionImpl;
 import query.implementation.FunctionReferenceImpl;
+import query.implementation.PairingImpl;
+import query.implementation.ProjectionImpl;
+import schema.Attribute;
 import schema.DataSchema;
 
 /**
@@ -52,10 +55,17 @@ public class OlapQueryHandler extends DefaultHandler{
 	/**
 	 * Are we process a domain node ?
 	 */
-	private boolean isDomain = false;
+	private boolean isDomain;
+
+	/**
+	 * Current Olap schema
+	 */
+	private DataSchema schema;
 	
-	OlapQueryHandler(){
-		
+	public OlapQueryHandler(DataSchema schema){
+		this.schema = schema;
+		map = new HashMap<String, Object[]>();
+		isDomain = false;
 	}
 	
 	/* (non-Javadoc)
@@ -78,20 +88,48 @@ public class OlapQueryHandler extends DefaultHandler{
 		measure = construct(measureId);
 	}
 
+	@SuppressWarnings("unchecked")
 	private PathExpression construct(String opId) {
 		
 		Object[] objTab = map.get(opId);
 		OlapPathExpressionOperator type = (OlapPathExpressionOperator) objTab[0];
+		PathExpression retPath = null;
+		PathExpression leftOp = null;
+		PathExpression rightOp = null;
 		
 		switch (type) {
-		case FUNCTION: FunctionReferenceImpl.createFunctionReference(function)
-			
-			break;
-
-		default:
-			break;
+			case FUNCTION: 
+				retPath = FunctionReferenceImpl.createFunctionReference(schema.getFunctionByName((String) objTab[1]));
+				break;
+			case COMPOSITION: 
+				leftOp = construct((String) objTab[1]);
+				rightOp = construct((String) objTab[2]);
+				retPath = CompositionImpl.createComposition(leftOp, rightOp);
+				break;
+			case PAIRING: 
+				leftOp = construct((String) objTab[1]);
+				rightOp = construct((String) objTab[2]);
+				retPath = PairingImpl.createPairing(leftOp, rightOp);
+				break;
+			case PROJECTION: 
+				List<String> domainList = (List<String>) objTab[1];
+				List<String> rangeList = (List<String>) objTab[2];
+				
+				ArrayList<Attribute> domainAttList = new ArrayList<Attribute>();
+				ArrayList<Attribute> rangeListAttList = new ArrayList<Attribute>();
+				
+				for (String attName : domainList) {
+					domainAttList.add(schema.getAttributeByName(attName));
+				}
+				for (String attName : rangeList) {
+					rangeListAttList.add(schema.getAttributeByName(attName));
+				}
+				
+				retPath = ProjectionImpl.createProjection(domainAttList, rangeListAttList);
+				break;
 		}
-		return null;
+		
+		return retPath;
 	}
 
 	@SuppressWarnings("unchecked")
