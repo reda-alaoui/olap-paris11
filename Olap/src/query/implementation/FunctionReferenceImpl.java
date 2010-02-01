@@ -23,7 +23,7 @@ public class FunctionReferenceImpl implements FunctionReference {
 	}
 
 	/**
-	 * This is the {@link #Function} this class referred to Function object are
+	 * This is the {@link Function} this class referred to Function object are
 	 * immutable
 	 */
 	private Function referredFunction;
