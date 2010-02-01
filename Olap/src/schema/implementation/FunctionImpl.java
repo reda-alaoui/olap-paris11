@@ -16,9 +16,9 @@ public class FunctionImpl implements Function {
 	private final Attribute range;
 	/**
 	 * 
-	 * @param name : Function's name
-	 * @param domain : Function's domain
-	 * @param range : Function's range
+	 * @param name Function's name
+	 * @param domain Function's domain
+	 * @param range Function's range
 	 * @see Attribute
 	 */
 	public FunctionImpl(String name, Attribute domain, Attribute range) {

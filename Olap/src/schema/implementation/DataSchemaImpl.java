@@ -22,9 +22,9 @@ public class DataSchemaImpl implements DataSchema{
 	private final List<Function> function_list;
 	/**
 	 * DataSchema's constructor
-	 * @param name : DataSchema's name
-	 * @param attribute_list : DataSchema's list of attributes
-	 * @param function_list : DataSchema's list of functions
+	 * @param name DataSchema's name
+	 * @param attribute_list DataSchema's list of attributes
+	 * @param function_list DataSchema's list of functions
 	 * @see Attribute
 	 * @see Function
 	 */

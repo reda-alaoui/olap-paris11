@@ -11,9 +11,9 @@ import schema.Attribute;
 import schema.Function;
 
 /**
- * QueryFactory is abbe to create an OLAPQuery by provide elementary parameter :
- * - 1 path as classifier
- * - 1 path as measure
+ * QueryFactory is abbe to create an OLAPQuery by provide elementary parameter :</br>
+ * - 1 path as classifier</br>
+ * - 1 path as measure</br>
  * - 1 aggregate function as aggregate {@link AggregationFunction}
  * successively apply olap operations.
  * <blockquote><pre> 
@@ -42,7 +42,7 @@ public interface QueryFactory {
 	
 	/**
 	 * Create a {@link FunctionReferenceImpl} by passing its name
-	 * @param name - the name of the function
+	 * @param name the name of the function
 	 * @return a new function reference
 	 * @see Function
 	 */
@@ -50,8 +50,8 @@ public interface QueryFactory {
 	 
 	/**
 	 * Create a {@link Composition} by passing its two params ({@link PathExpression})
-	 * @param p1 - expression1
-	 * @param p2 - expression2
+	 * @param p1 expression1
+	 * @param p2 expression2
 	 * 
 	 * @return a new composition
 	 * @throws Exception 
@@ -60,8 +60,8 @@ public interface QueryFactory {
 	
 	/**
 	 * Create a {@link PairingImpl} by passing its two params ({@link PathExpression})
-	 * @param p1 - expression1
-	 * @param p2 - expression2
+	 * @param p1 expression1
+	 * @param p2 expression2
 	 * 
 	 * @return a new pairing
 	 */
@@ -69,8 +69,8 @@ public interface QueryFactory {
 	
 	/**
 	 * Create a {@link ProjectionImpl} object by passing Path Expression and a list of attribute to restrict on
-	 * @param domain - the domain of the projection
-	 * @param selectList - the range to restrict on
+	 * @param domain the domain of the projection
+	 * @param selectList the range to restrict on
 	 * @return a new projection
 	 */
 	Projection projection(List<Attribute> domain, List<Attribute> selectList) throws PathExpressionValidationException;;
@@ -78,9 +78,9 @@ public interface QueryFactory {
 	/**
 	 * Build the OlapQuery by passing its classifier, measure and aggregate operator.
 	 * Theses params can be provided by OlapQuery itself.
-	 * @param c - the classifier	
-	 * @param m - the measure
-	 * @param op - the aggregate operator
+	 * @param c the classifier	
+	 * @param m the measure
+	 * @param op the aggregate operator
 	 * @return a new Olap query
 	 * @see OlapQuery
 	 */

@@ -18,8 +18,8 @@ public class ProjectionImpl implements Projection {
 
 	/**
 	 * Construct from attribute list and domain
-	 * @param domain - domain of the operator
-	 * @param selectedAttribute - attributes to project on
+	 * @param domain domain of the operator
+	 * @param selectedAttribute attributes to project on
 	 * @return a new projection
 	 */
 	public static Projection createProjection(List<Attribute> domain, List<Attribute> selectedAttribute) {
@@ -38,8 +38,8 @@ public class ProjectionImpl implements Projection {
 
 	/**
 	 * Construct from domain and range
-	 * @param domain - domain of the operator
-	 * @param selectedAttribute - attributes to project on
+	 * @param domain The domain of the operator
+	 * @param selectedAttribute The attributes to project on
 	 */
 	private ProjectionImpl(List<Attribute> domain, List<Attribute> selectedAttribute) {
 		super();

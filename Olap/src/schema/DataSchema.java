@@ -29,25 +29,25 @@ public interface DataSchema {
 	Iterator<Function> getFunctionIterator();
 	
 	/**
-	 * @param attribute_name : Name of the attribute to find
+	 * @param attribute_name Name of the attribute to find
 	 * @return The attribute having for name attribute_name
 	 */
 	Attribute getAttributeByName(String attribute_name);
 	
 	/**
-	 * @param function_range : Range of the functions to find
+	 * @param function_range Range of the functions to find
 	 * @return An iterator of functions having for range function_range
 	 */
 	Iterator<Function> getFunctionsByRange(Attribute function_range);
 	
 	/**
-	 * @param function_name : Name of the function to find
+	 * @param function_name Name of the function to find
 	 * @return The function having for name function_name
 	 */
 	Function getFunctionByName(String function_name);
 	
 	/**
-	 * @param function_domain : Domain of the functions to find
+	 * @param function_domain Domain of the functions to find
 	 * @return An iterator of functions having for domain function_domain
 	 */
 	Iterator<Function> getFunctionsByDomain(Attribute function_domain);
