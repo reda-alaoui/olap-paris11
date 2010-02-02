@@ -1,7 +1,6 @@
 package query.test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -64,7 +63,8 @@ public class ProjectionImplTest {
 			list1.add(it1.next());
 		}
 		
-		assertEquals(list1, domain);
+		assertEquals(list1, selectedAttribute);
+		
 	}
 
 	@Test
@@ -79,7 +79,7 @@ public class ProjectionImplTest {
 			list1.add(it1.next());
 		}
 		
-		assertTrue(domain.containsAll(list1));
+		assertEquals(list1, projection.getRange());
 		
 	}
 
