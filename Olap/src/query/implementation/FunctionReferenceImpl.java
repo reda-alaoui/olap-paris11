@@ -14,6 +14,7 @@ import schema.Function;
 /**
  * Implements {@link FunctionReference}
  * @author Julien.C
+ * @author Julien.T
  * @author Reda
  */
 public class FunctionReferenceImpl implements FunctionReference {

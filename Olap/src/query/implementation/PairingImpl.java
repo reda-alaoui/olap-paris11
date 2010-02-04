@@ -14,6 +14,7 @@ import schema.Attribute;
 /**
  * Implements {@link Pairing}
  * @author Julien.C
+ * @author Julien.T
  * @author Reda
  */
 public class PairingImpl implements Pairing {

@@ -17,6 +17,7 @@ import schema.implementation.FunctionImpl;
 /**
  * Test {@link FunctionReferenceImpl}
  * @author Julien.C
+ * @author Julien.T
  */
 public class FunctionReferenceImplTest {
 

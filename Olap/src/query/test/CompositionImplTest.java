@@ -20,6 +20,7 @@ import schema.implementation.FunctionImpl;
 /**
  * Test {@link CompositionImpl}
  * @author Reda
+ * @author Julien.T
  */
 public class CompositionImplTest {
 	

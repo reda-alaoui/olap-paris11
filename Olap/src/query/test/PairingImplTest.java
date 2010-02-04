@@ -23,6 +23,7 @@ import schema.implementation.FunctionImpl;
  * Test {@link PairingImpl}
  * This class tests the pairing implementation
  * @author Sylvestre
+ * @author Julien.T
  */
 public class PairingImplTest {
 

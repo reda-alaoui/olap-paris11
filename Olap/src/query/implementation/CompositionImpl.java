@@ -11,6 +11,7 @@ import schema.Attribute;
 /**
  * Implements {@link Composition}
  * @author Julien.C
+ * @author Julien.T
  * @author Reda
  */
 public class CompositionImpl implements Composition {
